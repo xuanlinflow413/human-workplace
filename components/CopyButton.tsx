@@ -42,7 +42,7 @@ export default function CopyButton({ text, className, label = "Copy" }: CopyButt
           : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800",
         className
       )}
-      aria-label={copied ? "Copied" : label}
+      aria-label={copied ? "Copied to clipboard" : `Copy ${label.toLowerCase()}`}
     >
       {copied ? (
         <>

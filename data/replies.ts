@@ -592,7 +592,7 @@ Let us talk again after you have had a chance to connect with them.
 
   {
     id: "manager-replies-2",
-    slug: "how-to-empathize-with-struggling-employee",
+    slug: "how-to-empathize-with-a-struggling-employee",
     category: "manager-replies",
     categoryLabel: "Manager Replies",
     title: "How to Empathize with a Struggling Employee",
@@ -1082,7 +1082,7 @@ Please stay in touch. I want to know where you land next — it will be somewher
 
   {
     id: "layoff-3",
-    slug: "how-to-communicate-layoffs-to-team",
+    slug: "how-to-communicate-layoffs-to-your-team",
     category: "layoff-communication",
     categoryLabel: "Layoff Communication",
     title: "How to Communicate Layoffs to Your Team",

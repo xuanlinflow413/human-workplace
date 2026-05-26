@@ -34,7 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const reply = getReplyBySlug(slug);
   if (!reply) {
     return {
-      title: "Not Found — Human Workplace",
+      title: "Page Not Found — Human Workplace",
+      description: "The page you are looking for does not exist. Browse our workplace reply templates.",
     };
   }
   return {
@@ -70,6 +71,34 @@ export default async function ReplyPage({ params }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: reply.h1,
+            description: reply.metaDescription,
+            url: `https://human-workplace.pages.dev/workplace/${reply.slug}/`,
+            datePublished: reply.updatedAt,
+            dateModified: reply.updatedAt,
+            author: {
+              "@type": "Organization",
+              name: "Human Workplace",
+              url: "https://human-workplace.pages.dev/",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Human Workplace",
+              url: "https://human-workplace.pages.dev/",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://human-workplace.pages.dev/workplace/${reply.slug}/`,
+            },
+          }),
+        }}
+      />
       <Header />
 
       <main className="flex-1">
