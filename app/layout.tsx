@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   verification: {
-    google: "pending",
+    google: "r79PY62ZMOSfpJOaPPb7ismHQA9KS2WupX3dwbYK8_o",
   },
 };
 
