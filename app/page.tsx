@@ -18,8 +18,8 @@ export default function HomePage() {
               <span>Real replies for hard moments</span>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-5">
-              The right words{" "}
-              <span className="text-stone-500">for hard moments</span>
+              The right words
+              <span className="text-stone-500"> for hard moments</span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
               Copy-ready workplace replies for resignation, burnout, difficult
