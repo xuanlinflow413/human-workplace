@@ -2,7 +2,15 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { categories, replies } from "@/data/replies";
-import { Heart, ArrowRight, MessageSquare, Clock } from "lucide-react";
+import { Heart, ArrowRight, MessageSquare, Clock, Quote } from "lucide-react";
+
+const mostShared = [
+  replies.find((r) => r.slug === "how-to-resign-gracefully")!,
+  replies.find((r) => r.slug === "email-template-for-burnout-leave")!,
+  replies.find((r) => r.slug === "manager-layoff-announcement-email")!,
+  replies.find((r) => r.slug === "how-to-address-performance-issues-with-empathy")!,
+  replies.find((r) => r.slug === "giving-negative-feedback-that-lands-well")!,
+];
 
 export default function HomePage() {
   return (
@@ -32,6 +40,42 @@ export default function HomePage() {
               <span>Browse all replies</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
+          </div>
+        </section>
+
+        {/* Most Shared Replies */}
+        <section className="px-4 py-12 border-t border-border">
+          <div className="mx-auto max-w-5xl">
+            <div className="flex items-center gap-2 mb-2">
+              <Quote className="h-4 w-4 text-[#a8a29e]" />
+              <h2 className="text-lg font-semibold text-foreground">
+                Most Shared Replies
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground mb-6">
+              The ones people screenshot, save, and send to a friend
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {mostShared.map((reply) => (
+                <Link
+                  key={reply.id}
+                  href={`/workplace/${reply.slug}/`}
+                  className="group rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                      {reply.categoryLabel}
+                    </span>
+                  </div>
+                  <blockquote className="text-base font-medium text-foreground leading-relaxed mb-3 group-hover:text-stone-700 transition-colors">
+                    &ldquo;{reply.shareQuote}&rdquo;
+                  </blockquote>
+                  <p className="text-xs text-muted-foreground">
+                    — {reply.title}
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

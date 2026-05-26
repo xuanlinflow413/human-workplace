@@ -78,16 +78,14 @@ export const replies: Reply[] = [
     slug: "how-to-resign-gracefully",
     category: "resignation",
     categoryLabel: "Resignation",
-    title: "How to Resign Gracefully",
+    title: "The Email That Lets You Leave With Your Head High",
     h1: "How to Resign Gracefully: A Thoughtful Email Template",
     metaTitle:
       "How to Resign Gracefully: Email Template & Examples | Human Workplace",
     metaDescription:
       "A real resignation email template that preserves relationships. Copy, personalize, and send with confidence.",
-    situation:
-      "You have decided to leave your job, but you want to maintain the relationships you have built. You are not burning bridges — you are closing a chapter with care.",
-    situationShort:
-      "Leaving a job while preserving relationships and professional reputation.",
+    situation: "It is Sunday night. You have made the decision. Tomorrow you will tell your manager you are leaving. You want to write something that feels honest — not corporate, not overly emotional, just human. You want them to remember you as someone who cared enough to do this right.",
+    situationShort: "The moment you decide to leave, and want to be remembered for how you handled it.",
     template: `Subject: Resignation — [Your Name]
 
 Dear [Manager's Name],
@@ -103,10 +101,10 @@ Thank you again for everything. I hope our paths cross again.
 Warmly,
 [Your Name]`,
     whyItWorks: [
-      "It opens with clarity — no beating around the bush.",
-      "It acknowledges the relationship, not just the transaction.",
-      "It offers to help with the transition, which signals maturity.",
-      "It ends with warmth, leaving the door open for future connection.",
+      "It opens with clarity because ambiguity creates anxiety — your manager deserves to know immediately, not decode your intent.",
+      "It names one specific thing you valued because generic gratitude feels like a form letter; a real memory shows you were paying attention.",
+      "It offers to help with the transition because leaving gracefully means not leaving a mess for others to clean up.",
+      "It ends with warmth and an open door because the people you worked with are still people — and relationships outlast jobs.",
     ],
     variations: [
       {
@@ -165,7 +163,7 @@ I would love to stay in touch. Coffee sometime?
       },
     ],
     shareQuote:
-      "I wanted to let you know that I have decided to move on... This was not an easy decision.",
+      "This was not an easy decision. I have genuinely valued my time here.",
     readTime: "3 min",
     updatedAt: "2025-06-01",
   },
@@ -175,16 +173,14 @@ I would love to stay in touch. Coffee sometime?
     slug: "two-weeks-notice-email",
     category: "resignation",
     categoryLabel: "Resignation",
-    title: "Two Weeks Notice Email",
+    title: "The Two-Week Notice That Does Not Overthink It",
     h1: "Two Weeks Notice Email: A Clear, Respectful Template",
     metaTitle:
       "Two Weeks Notice Email Template: Professional & Respectful | Human Workplace",
     metaDescription:
       "A straightforward two weeks notice email that covers the essentials without over-explaining. Copy-ready.",
-    situation:
-      "You need to give your two weeks notice in writing. You want it to be professional, clear, and brief — no drama, no oversharing.",
-    situationShort:
-      "Giving standard two weeks notice in a clear, professional email.",
+    situation: "You need to give notice, and you do not want to write a novel. You want something clean, respectful, and done — so you can focus on the actual conversation, not the wording.",
+    situationShort: "When you need to give notice without the drama or the essay.",
     template: `Subject: Two Weeks' Notice — [Your Name]
 
 Dear [Manager's Name],
@@ -198,10 +194,10 @@ Thank you for the opportunity to be part of the team.
 Best,
 [Your Name]`,
     whyItWorks: [
-      "It is short — no one needs a novel for a two weeks notice.",
-      "It states the last day clearly, avoiding confusion.",
-      "It proactively mentions transition tasks, showing responsibility.",
-      "It keeps the tone neutral and professional.",
+      "It is short because your manager does not need your life story — they need a date and a plan.",
+      "It states the last day clearly because ambiguity around timing creates scheduling chaos for everyone.",
+      "It proactively mentions transition tasks because responsibility signals maturity, even as you leave.",
+      "It keeps the tone neutral because this is a professional formality, not a therapy session.",
     ],
     variations: [
       {
@@ -242,7 +238,7 @@ Best,
       },
     ],
     shareQuote:
-      "I am writing to formally give my two weeks' notice. My last day will be [Date].",
+      "I am committed to making this transition smooth.",
     readTime: "2 min",
     updatedAt: "2025-06-01",
   },
@@ -252,16 +248,14 @@ Best,
     slug: "resignation-without-burning-bridges",
     category: "resignation",
     categoryLabel: "Resignation",
-    title: "Resignation Without Burning Bridges",
+    title: "Leaving Without Leaving Scars",
     h1: "How to Resign Without Burning Bridges",
     metaTitle:
       "How to Resign Without Burning Bridges: Email Template | Human Workplace",
     metaDescription:
       "Resign with dignity. A bridge-preserving email template for when you want to leave on the best possible terms.",
-    situation:
-      "You are leaving a job where you have strong relationships. You want to ensure people remember you fondly, not as someone who left messily.",
-    situationShort:
-      "Leaving while actively preserving professional relationships.",
+    situation: "You are walking away from a team you actually care about. You want them to know this is not about them — and you want to make sure the door stays open, because these are people you might want to work with again.",
+    situationShort: "When you are leaving people behind, not just a job.",
     template: `Subject: Personal Update — [Your Name]
 
 Dear [Manager's Name],
@@ -278,10 +272,10 @@ Thank you for everything.
 
 [Your Name]`,
     whyItWorks: [
-      "It frames the resignation as 'personal news,' which feels less transactional.",
-      "It names a specific memory, making the gratitude feel real.",
-      "It proactively offers documentation and training.",
-      "It explicitly invites future contact, keeping the relationship alive.",
+      "It frames the resignation as 'personal news' because that wording feels less like a transaction and more like a conversation between humans.",
+      "It names a specific memory because 'I will miss you all' is forgettable; 'I will never forget how we built X together' is not.",
+      "It proactively offers documentation and training because the best goodbye is one where no one has to pick up the pieces.",
+      "It explicitly invites future contact because the best professional relationships do not end when the job does.",
     ],
     variations: [
       {
@@ -328,16 +322,14 @@ Please keep in touch — [personal email or LinkedIn].
     slug: "email-template-for-burnout-leave",
     category: "burnout-support",
     categoryLabel: "Burnout Support",
-    title: "Email Template for Burnout Leave",
+    title: "Asking for Time When You Have Nothing Left",
     h1: "How to Request Time Off for Burnout: Email Template",
     metaTitle:
       "Burnout Leave Email Template: How to Request Time Off | Human Workplace",
     metaDescription:
       "A respectful email template for requesting burnout leave. Clear, honest, and professional without oversharing.",
-    situation:
-      "You are experiencing burnout and need time off to recover. You want to communicate this to your manager without going into unnecessary detail or sounding like you are giving up.",
-    situationShort:
-      "Requesting time off to recover from burnout in a professional way.",
+    situation: "You are exhausted in a way that sleep does not fix. You need time away, but you are worried about how it will look — will they think you are weak? Will they question your commitment? You need words that make this feel like a reasonable request, not a confession.",
+    situationShort: "When you are running on empty and need permission to stop.",
     template: `Subject: Request for Leave — [Your Name]
 
 Dear [Manager's Name],
@@ -352,10 +344,10 @@ Thank you for your understanding.
 
 [Your Name]`,
     whyItWorks: [
-      "It frames the request around health, which is a legitimate and protected reason in most workplaces.",
-      "It specifies dates, making it easy for your manager to plan.",
-      "It proactively addresses the handoff, reducing your manager's anxiety.",
-      "It does not over-explain — you do not owe a medical diagnosis.",
+      "It frames the request around health because that is what this is — and health is a legitimate reason that requires no further justification.",
+      "It specifies dates because vagueness creates anxiety for your manager; clarity creates space for them to plan.",
+      "It proactively addresses the handoff because the less your manager has to worry about coverage, the more they can focus on supporting you.",
+      "It does not over-explain because you do not owe a diagnosis — you owe your work your best self, and right now you need time to get back to that.",
     ],
     variations: [
       {
@@ -409,7 +401,7 @@ I appreciate your support during this time.
       },
     ],
     shareQuote:
-      "I have been feeling mentally and physically exhausted, and I need this time to rest and recover.",
+      "I need this time to rest and recover so I can return fully present.",
     readTime: "3 min",
     updatedAt: "2025-06-01",
   },
@@ -419,16 +411,14 @@ I appreciate your support during this time.
     slug: "talking-to-your-manager-about-burnout",
     category: "burnout-support",
     categoryLabel: "Burnout Support",
-    title: "Talking to Your Manager About Burnout",
+    title: "The Conversation You Keep Putting Off",
     h1: "How to Talk to Your Manager About Burnout",
     metaTitle:
       "How to Talk to Your Manager About Burnout: What to Say | Human Workplace",
     metaDescription:
       "A guide for having the burnout conversation with your manager. Includes what to say, what not to say, and how to prepare.",
-    situation:
-      "You need to have a conversation with your manager about your burnout. You are worried about how it will be received and what it means for your career.",
-    situationShort:
-      "Preparing for and conducting a burnout conversation with your manager.",
+    situation: "You have been struggling for weeks, maybe months. Every morning is harder than the last. You know you need to talk to your manager, but the thought of saying the words out loud makes your chest tight. You need a script that feels honest without feeling vulnerable.",
+    situationShort: "When you know you need to say something, but the words keep getting stuck.",
     template: `Hi [Manager's Name],
 
 I would like to schedule some time to talk about my workload and well-being. Would you be available for [15-20 minutes] this week?
@@ -450,10 +440,10 @@ Some specific things I am struggling with: [list 2-3 concrete examples].
 
 I would appreciate your guidance on how we can address this together."`,
     whyItWorks: [
-      "It frames the conversation around work quality, not personal weakness.",
-      "It shows you are being proactive, not reactive.",
-      "It brings concrete examples, which makes the problem solvable.",
-      "It asks for collaboration, not rescue — this invites your manager to be part of the solution.",
+      "It frames the conversation around work quality because that shifts the focus from 'what is wrong with you' to 'how do we fix this together' — which is much easier to say out loud.",
+      "It shows you are being proactive because asking for help before things fall apart demonstrates strength, not weakness.",
+      "It brings concrete examples because 'I am overwhelmed' is easy to dismiss; 'I am struggling with X, Y, and Z' is a problem to solve.",
+      "It asks for collaboration because people want to help when they feel needed — and this invites your manager to be part of the solution, not just a witness to your struggle.",
     ],
     variations: [
       {
@@ -489,7 +479,7 @@ I am open to other ideas too. What do you think?"`,
       },
     ],
     shareQuote:
-      "I am not looking to step back from responsibility — I am looking for support.",
+      "I am not looking to step back — I am looking for support.",
     readTime: "4 min",
     updatedAt: "2025-06-01",
   },
@@ -500,16 +490,14 @@ I am open to other ideas too. What do you think?"`,
     slug: "supportive-manager-response-to-burnout",
     category: "manager-replies",
     categoryLabel: "Manager Replies",
-    title: "Supportive Manager Response to Burnout",
+    title: "When Someone on Your Team Says They Are Burnt Out",
     h1: "How to Respond When a Team Member Says They Are Burnt Out",
     metaTitle:
       "Manager Response to Burnout: Supportive Email Template | Human Workplace",
     metaDescription:
       "A manager's guide to responding to burnout with empathy and action. Includes what to say and what to do next.",
-    situation:
-      "A team member has told you they are experiencing burnout. You want to respond in a way that shows you care, takes their concern seriously, and leads to concrete action.",
-    situationShort:
-      "Responding to an employee who has shared they are experiencing burnout.",
+    situation: "They just told you. Maybe in a one-on-one, maybe over Slack, maybe with tears. However it came out, they trusted you with something hard. Now you need to respond in a way that makes them feel heard — and leads to actual change, not just sympathy.",
+    situationShort: "The moment a team member trusts you with their burnout — and you need to earn that trust.",
     template: `Subject: Re: Our conversation
 
 Dear [Employee's Name],
@@ -530,10 +518,10 @@ Let us find 20 minutes this week to talk through this in more detail. Does [day/
 
 [Your Name]`,
     whyItWorks: [
-      "It validates their courage immediately — this builds psychological safety.",
-      "It moves quickly to action — empathy without action feels hollow.",
-      "It offers specific proposals, not vague promises.",
-      "It schedules a follow-up, showing ongoing commitment.",
+      "It validates their courage immediately because speaking up about burnout is terrifying — acknowledging that bravery makes them feel seen, not judged.",
+      "It moves quickly to action because empathy without follow-through feels hollow; people need to know something will actually change.",
+      "It offers specific proposals because 'we will figure it out' is vague and anxiety-inducing; 'here is exactly what I am proposing' creates safety.",
+      "It schedules a follow-up because one conversation is not enough — ongoing commitment shows this was not just a box to check.",
     ],
     variations: [
       {
@@ -595,16 +583,14 @@ Let us talk again after you have had a chance to connect with them.
     slug: "how-to-empathize-with-a-struggling-employee",
     category: "manager-replies",
     categoryLabel: "Manager Replies",
-    title: "How to Empathize with a Struggling Employee",
+    title: "Noticing When Someone Is Not Okay",
     h1: "How to Empathize with a Struggling Employee: What to Say",
     metaTitle:
       "Empathizing with a Struggling Employee: Manager's Guide | Human Workplace",
     metaDescription:
       "What to say when an employee is going through a hard time. A manager's guide to empathy without overstepping.",
-    situation:
-      "An employee on your team is going through something difficult — personal loss, health issues, or just a rough patch. You want to acknowledge it without being intrusive.",
-    situationShort:
-      "Acknowledging an employee's difficult time with empathy and boundaries.",
+    situation: "You have watched them fade. The person who used to light up in meetings is now quiet. The reliable performer is missing deadlines. You do not know what is going on, but you know something is. You want to reach out without being intrusive, without making them perform their pain for you.",
+    situationShort: "When you see someone struggling and want to offer support without demanding a performance.",
     template: `Hey [Employee's Name],
 
 I have noticed you seem a bit off lately, and I wanted to check in. I am not looking for details — I just want you to know that I see you, and I care.
@@ -614,10 +600,10 @@ If there is anything I can do to make work easier right now — adjusting deadli
 Take care,
 [Your Name]`,
     whyItWorks: [
-      "It notices without prying — 'you seem off' is observational, not diagnostic.",
-      "It explicitly removes pressure to share — this respects boundaries.",
-      "It offers concrete help, not just 'let me know if you need anything.'",
-      "It is brief — a long message can feel overwhelming when someone is struggling.",
+      "It notices without prying because 'you seem off' is observational, not diagnostic — it says 'I see you' without saying 'explain yourself.'",
+      "It explicitly removes pressure to share because when someone is struggling, the last thing they need is to feel obligated to perform their pain for you.",
+      "It offers concrete help because 'let me know if you need anything' puts the burden on them; naming specific options makes it easier to accept.",
+      "It is brief because a long message can feel overwhelming when someone is already carrying too much — sometimes the kindest thing is to keep it short.",
     ],
     variations: [
       {
@@ -651,7 +637,7 @@ I will check in with you [frequency: weekly / biweekly] to see how you are doing
       },
     ],
     shareQuote:
-      "I am not looking for details — I just want you to know that I see you, and I care.",
+      "I see you, and I care. No pressure to share anything you do not want to.",
     readTime: "3 min",
     updatedAt: "2025-06-01",
   },
@@ -662,16 +648,14 @@ I will check in with you [frequency: weekly / biweekly] to see how you are doing
     slug: "how-to-address-performance-issues-with-empathy",
     category: "difficult-conversations",
     categoryLabel: "Difficult Conversations",
-    title: "How to Address Performance Issues with Empathy",
+    title: "The Performance Conversation Nobody Wants to Have",
     h1: "How to Address Performance Issues with Empathy: Manager's Guide",
     metaTitle:
       "Addressing Performance Issues with Empathy: What to Say | Human Workplace",
     metaDescription:
       "A manager's guide to discussing performance issues without destroying morale. Includes email template and conversation framework.",
-    situation:
-      "You need to address a performance issue with a team member. You want to be direct about the problem while preserving their dignity and motivation.",
-    situationShort:
-      "Discussing performance issues while preserving the employee's dignity.",
+    situation: "You have been avoiding it. The missed deadlines, the dropped balls, the conversations you have had in your head a dozen times. Now you have to actually say it out loud — and you need to do it in a way that preserves their dignity while being clear about what needs to change.",
+    situationShort: "When you have to tell someone they are not meeting expectations — and you want them to still feel like a person afterward.",
     template: `Subject: Check-in
 
 Dear [Employee's Name],
@@ -698,10 +682,10 @@ Can you help me understand what might be contributing to this? Is there somethin
 
 "Here is what I would like to see change: [specific expectation]. Let us set a timeline of [timeframe] and check in [frequency]. Does that feel reasonable?"`,
     whyItWorks: [
-      "It frames the conversation as support, not punishment — this lowers defensiveness.",
-      "It uses specific examples, not vague generalizations — this makes the problem actionable.",
-      "It asks for their perspective — this invites collaboration, not compliance.",
-      "It ends with a clear agreement — this creates accountability without hostility.",
+      "It frames the conversation as support because when someone hears they are underperforming, their first instinct is defensiveness — 'I want to help' disarms that before it starts.",
+      "It uses specific examples because 'you need to do better' is cruel in its vagueness; naming exactly what you observed makes the problem solvable.",
+      "It asks for their perspective because nobody wants to be talked at — inviting them into the conversation turns it from a verdict into a collaboration.",
+      "It ends with a clear agreement because ambiguity creates anxiety; knowing exactly what is expected and when you will check in gives them a path forward.",
     ],
     variations: [
       {
@@ -747,16 +731,14 @@ I believe you can do this. Let us figure out how."`,
     slug: "giving-negative-feedback-that-lands-well",
     category: "difficult-conversations",
     categoryLabel: "Difficult Conversations",
-    title: "Giving Negative Feedback That Lands Well",
+    title: "Feedback That Actually Lands",
     h1: "Giving Negative Feedback That Lands Well: A Manager's Template",
     metaTitle:
       "Giving Negative Feedback That Lands Well: Email & Conversation | Human Workplace",
     metaDescription:
       "How to deliver negative feedback so it is heard, not rejected. A real manager's template for difficult conversations.",
-    situation:
-      "You need to give negative feedback to a colleague or direct report. You want them to actually hear it and act on it, not shut down or get defensive.",
-    situationShort:
-      "Delivering negative feedback that leads to improvement, not defensiveness.",
+    situation: "You have feedback they need to hear. Not the easy kind — the kind that stings. You have seen them shut down before, or get defensive, or nod along and change nothing. This time you want to say it in a way they can actually hear, absorb, and act on.",
+    situationShort: "When you have hard feedback and you are tired of watching it bounce off.",
     template: `Hey [Name],
 
 I have some feedback I would like to share. It is about [specific situation], and I am bringing it up because I care about your growth here.
@@ -771,10 +753,10 @@ What do you think? I am curious about your perspective.
 
 [Your Name]`,
     whyItWorks: [
-      "It leads with care — 'I am bringing this up because I care' reframes feedback as an investment.",
-      "It separates observation from interpretation — this reduces defensiveness.",
-      "It names the impact — this makes the feedback feel relevant, not arbitrary.",
-      "It asks for their perspective — this turns a monologue into a dialogue.",
+      "It leads with care because 'I am bringing this up because I care' reframes feedback from criticism to investment — and that one shift changes everything about how it is received.",
+      "It separates observation from interpretation because when you say 'you were dismissive,' they hear an attack; when you say 'you interrupted three times,' they hear a fact they can work with.",
+      "It names the impact because feedback feels arbitrary until someone understands why it matters — the impact makes it real.",
+      "It asks for their perspective because a monologue feels like a lecture; a dialogue feels like a conversation between people who respect each other.",
     ],
     variations: [
       {
@@ -822,16 +804,14 @@ I am not sure if you are aware of how it is coming across, so I wanted to mentio
     slug: "how-to-apologize-professionally",
     category: "difficult-conversations",
     categoryLabel: "Difficult Conversations",
-    title: "How to Apologize Professionally",
+    title: "The Apology That Rebuilds What You Broke",
     h1: "How to Apologize Professionally: Email Template & Examples",
     metaTitle:
       "How to Apologize Professionally: Email Template | Human Workplace",
     metaDescription:
       "A real professional apology template that takes responsibility without over-apologizing. Copy-ready for workplace mistakes.",
-    situation:
-      "You made a mistake at work — missed a deadline, sent the wrong information, or let someone down. You need to apologize in a way that rebuilds trust without groveling.",
-    situationShort:
-      "Apologizing for a workplace mistake while rebuilding trust.",
+    situation: "You messed up. Maybe it was a missed deadline, maybe it was something you said, maybe it was an email sent too quickly. Now someone is hurt, or frustrated, or disappointed in you. You need to own it — fully, without excuses — and show them it will not happen again.",
+    situationShort: "When you have let someone down and you need to earn back their trust.",
     template: `Subject: Re: [Original subject]
 
 Dear [Name],
@@ -846,10 +826,10 @@ I understand if this affects your trust in me, and I am committed to earning it 
 
 [Your Name]`,
     whyItWorks: [
-      "It names the mistake specifically — vague apologies feel insincere.",
-      "It takes responsibility — 'I am sorry you feel that way' is not an apology.",
-      "It includes action — an apology without change is just words.",
-      "It acknowledges the impact on trust — this shows emotional intelligence.",
+      "It names the mistake specifically because 'I am sorry for what happened' is vague and feels evasive; 'I am sorry I missed the deadline you needed' is specific and accountable.",
+      "It takes responsibility because 'I am sorry you feel that way' is not an apology — it is blame dressed up in polite language; real accountability means saying 'this was my error.'",
+      "It includes action because words are cheap; showing exactly what you are doing to fix it and prevent it proves you mean what you say.",
+      "It acknowledges the impact on trust because pretending everything is fine ignores the real damage; naming it shows you understand what is at stake.",
     ],
     variations: [
       {
@@ -900,7 +880,7 @@ Please reach out directly if you have any concerns.
       },
     ],
     shareQuote:
-      "I take full responsibility — this was my error, and I am sorry for the impact it had.",
+      "I take full responsibility. This was my error, and I am sorry for the impact.",
     readTime: "3 min",
     updatedAt: "2025-06-01",
   },
@@ -911,16 +891,14 @@ Please reach out directly if you have any concerns.
     slug: "manager-layoff-announcement-email",
     category: "layoff-communication",
     categoryLabel: "Layoff Communication",
-    title: "Manager Layoff Announcement Email",
+    title: "Telling the Team Someone Is Gone",
     h1: "How to Announce Layoffs to Your Team: Manager's Email Template",
     metaTitle:
       "Manager Layoff Announcement Email Template | Human Workplace",
     metaDescription:
       "A dignified layoff announcement email for managers. Clear, compassionate, and professional.",
-    situation:
-      "You need to announce layoffs to your remaining team. They are anxious, some of their colleagues are gone, and they need clarity about what happens next.",
-    situationShort:
-      "Announcing layoffs to the remaining team with clarity and compassion.",
+    situation: "The decision was made above you, or maybe you had to make it yourself. Either way, people you care about are gone, and the people who remain are looking at you for answers. You need to say something that honors the people who left while giving the survivors something to hold onto.",
+    situationShort: "When people are gone and the ones left need you to say something that matters.",
     template: `Subject: An important update about our team
 
 Team,
@@ -941,10 +919,10 @@ If you want to talk, my door is open. I will also hold a team meeting on [day/ti
 
 [Your Name]`,
     whyItWorks: [
-      "It names the people — avoiding names feels dehumanizing.",
-      "It explicitly states this is not about performance — this reduces survivor guilt.",
-      "It offers what you know and admits what you do not — this builds trust.",
-      "It creates a specific time for questions — this channels anxiety into action.",
+      "It names the people because avoiding names feels dehumanizing — like they were just numbers on a spreadsheet; saying their names honors their humanity.",
+      "It explicitly states this is not about performance because survivor guilt is real, and people need to know they are not next on some hidden list.",
+      "It offers what you know and admits what you do not because false confidence destroys trust faster than honest uncertainty ever could.",
+      "It creates a specific time for questions because anxiety needs somewhere to go — channeling it into a scheduled conversation is better than letting it fester in Slack DMs.",
     ],
     variations: [
       {
@@ -994,16 +972,14 @@ I will hold office hours this week for anyone who wants to talk. Here is my sche
     slug: "what-to-say-to-someone-who-got-laid-off",
     category: "layoff-communication",
     categoryLabel: "Layoff Communication",
-    title: "What to Say to Someone Who Got Laid Off",
+    title: "Reaching Out When Someone Just Lost Their Job",
     h1: "What to Say to Someone Who Got Laid Off: A Supportive Guide",
     metaTitle:
       "What to Say to Someone Who Got Laid Off: Supportive Messages | Human Workplace",
     metaDescription:
       "The right words when a colleague gets laid off. What to say, what not to say, and how to actually help.",
-    situation:
-      "A colleague or friend was just laid off. You want to reach out but are not sure what to say. You do not want to say the wrong thing or make it worse.",
-    situationShort:
-      "Reaching out to a colleague who has been laid off with genuine support.",
+    situation: "You just got the message, or saw the LinkedIn post, or heard through someone else. They are gone. You want to say something, but everything you think of sounds hollow — let me know if you need anything feels like nothing, and everything happens for a reason feels like an insult.",
+    situationShort: "When a colleague just got laid off and you want to say something that actually means something.",
     template: `Hey [Name],
 
 I just heard the news, and I am so sorry. I know how much you cared about the work you were doing, and this is not fair.
@@ -1018,10 +994,10 @@ Take care of yourself.
 
 [Your Name]`,
     whyItWorks: [
-      "It validates the unfairness — 'this is not fair' acknowledges their reality.",
-      "It names a specific memory — this makes the compliment feel real, not generic.",
-      "It offers concrete help — 'anything I can do' is vague; naming specific offers shows sincerity.",
-      "It does not rush to silver linings — let them grieve before pivoting to optimism.",
+      "It validates the unfairness because 'this is not fair' acknowledges their reality in a way that 'everything happens for a reason' never could — it says 'you are right to be upset.'",
+      "It names a specific memory because generic compliments feel like copy-paste sympathy; recalling something real you worked on together makes it clear this is personal.",
+      "It offers concrete help because 'anything I can do' is well-meaning but useless; naming specific offers — introductions, references, resume help — makes it easy for them to accept.",
+      "It does not rush to silver linings because grief needs space; pushing someone to see the bright side before they are ready just makes them feel unseen.",
     ],
     variations: [
       {
@@ -1075,7 +1051,7 @@ Please stay in touch. I want to know where you land next — it will be somewher
       },
     ],
     shareQuote:
-      "I know how much you cared about the work you were doing, and this is not fair.",
+      "I know how much you cared about this work, and this is not fair.",
     readTime: "3 min",
     updatedAt: "2025-06-01",
   },
@@ -1085,16 +1061,14 @@ Please stay in touch. I want to know where you land next — it will be somewher
     slug: "how-to-communicate-layoffs-to-your-team",
     category: "layoff-communication",
     categoryLabel: "Layoff Communication",
-    title: "How to Communicate Layoffs to Your Team",
+    title: "The Hardest Email a Leader Ever Writes",
     h1: "How to Communicate Layoffs to Your Team: A Leader's Framework",
     metaTitle:
       "How to Communicate Layoffs to Your Team: Leader's Guide | Human Workplace",
     metaDescription:
       "A leader's framework for communicating layoffs with dignity. Includes email template, talking points, and follow-up strategy.",
-    situation:
-      "You are a leader who needs to communicate layoffs to your team. You need to balance transparency with compassion, and provide a path forward.",
-    situationShort:
-      "A comprehensive framework for leaders communicating layoffs to their team.",
+    situation: "You have been up all night, or maybe you have not slept at all. The decisions were made, the conversations happened behind closed doors, and now you have to tell everyone else. You need to be clear, you need to be compassionate, and you need to give people a reason to still trust you tomorrow.",
+    situationShort: "When you are the one who has to tell everyone — and you know nothing you say will make this okay.",
     template: `Team,
 
 Today is a hard day. I need to tell you that we are reducing our team, and [number] roles are being eliminated.
@@ -1119,10 +1093,10 @@ I know you have questions, and I may not have all the answers yet. I commit to s
 
 [Your Name]`,
     whyItWorks: [
-      "It opens with honesty — 'Today is a hard day' sets the right tone.",
-      "It separates notification from announcement — affected people hear first.",
-      "It provides a timeline — this reduces anxiety about what comes next.",
-      "It commits to transparency — this is what people need most in uncertainty.",
+      "It opens with honesty because 'Today is a hard day' sets the right tone immediately — it tells people this is serious without trying to soften the blow with corporate language.",
+      "It separates notification from announcement because affected people deserve to hear first; announcing to everyone at once betrays the trust of those leaving.",
+      "It provides a timeline because uncertainty is the hardest part of layoffs; knowing what happens today, this week, and going forward gives people something to hold onto.",
+      "It commits to transparency because in the absence of information, people invent their own — and what they invent is usually worse than the truth.",
     ],
     variations: [
       {
@@ -1164,7 +1138,7 @@ For those staying: I know you are wondering what this means for you. Let us talk
       },
     ],
     shareQuote:
-      "Today is a hard day. I need to tell you that we are reducing our team.",
+      "Today is a hard day. I commit to sharing what I know, when I know it.",
     readTime: "4 min",
     updatedAt: "2025-06-01",
   },
