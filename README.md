@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Human Workplace
 
-## Getting Started
+A curated collection of real, professional, and emotionally intelligent workplace replies.
 
-First, run the development server:
+## What it is
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Human Workplace provides copy-ready replies for the hardest moments at work — resignation, burnout, difficult conversations, layoff communication, and more. Every reply is written to sound like a real person, not a chatbot template.
+
+## Live Site
+
+- **Production**: https://human-workplace.pages.dev
+
+## Features
+
+- **13 high-quality reply templates** across 5 workplace categories
+- **One-click copy** for every template and variation
+- **Multiple tones** — formal, personal, or somewhere in between
+- **Why it works** — explanations for every reply
+- **Common mistakes** — what to avoid
+- **FAQ** — answers to real questions
+- **Shareable quote cards** — copy a formatted quote to share
+- **Fully static** — no database, no login, no tracking
+- **SEO optimized** — sitemap, robots.txt, Open Graph, JSON-LD
+- **Mobile responsive**
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- Lucide React icons
+- Cloudflare Pages (static export)
+
+## Project Structure
+
+```
+app/
+  page.tsx              # Homepage
+  layout.tsx            # Root layout with SEO metadata
+  globals.css           # Tailwind + custom CSS variables
+  workplace/
+    page.tsx            # Category listing page
+    [slug]/
+      page.tsx          # Individual reply detail page
+  about/
+    page.tsx            # About page
+  privacy/
+    page.tsx            # Privacy policy
+  terms/
+    page.tsx            # Terms of service
+  robots.txt/
+    route.ts            # Dynamic robots.txt
+  sitemap.xml/
+    route.ts            # Dynamic sitemap
+components/
+  Header.tsx            # Sticky navigation
+  Footer.tsx            # Site footer
+  CopyButton.tsx        # One-click copy with feedback
+  ShareQuote.tsx        # Shareable quote card UI
+data/
+  replies.ts            # All reply data (hardcoded)
+lib/
+  utils.ts              # Utility functions (cn)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This generates a static export in the `out/` directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Cloudflare Pages (Recommended)
 
-## Deploy on Vercel
+```bash
+npx wrangler pages deploy out --project-name=human-workplace --branch=main
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Requires `CLOUDFLARE_API_TOKEN` environment variable.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Manual Upload
+
+Upload the contents of the `out/` directory to any static hosting service.
+
+## Categories
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| Resignation | 3 | Leave with grace and dignity |
+| Burnout Support | 2 | Support yourself and others |
+| Manager Replies | 2 | Lead with empathy |
+| Difficult Conversations | 3 | Speak with care |
+| Layoff Communication | 3 | Navigate hard news |
+
+## License
+
+MIT
