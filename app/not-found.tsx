@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
-  title: "Page Not Found — Human Workplace",
+  title: "Page Not Found — KindReply",
   description: "The page you are looking for does not exist. Browse our workplace reply templates.",
 };
 

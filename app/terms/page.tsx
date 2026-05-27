@@ -3,9 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Terms of Service — Human Workplace",
+  title: "Terms of Service — KindReply",
   description:
-    "By using Human Workplace, you agree to these terms. Our content is for informational purposes only.",
+    "By using KindReply, you agree to these terms. Our content is for informational purposes only.",
   alternates: {
     canonical: "/terms/",
   },
@@ -33,7 +33,7 @@ export default function TermsPage() {
 
             <div className="prose prose-stone max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                By accessing and using Human Workplace, you accept and agree to be
+                By accessing and using KindReply, you accept and agree to be
                 bound by the terms and provisions of this agreement.
               </p>
 
@@ -41,7 +41,7 @@ export default function TermsPage() {
                 Use of content
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                All content on Human Workplace is provided for informational and
+                All content on KindReply is provided for informational and
                 educational purposes. You are free to copy, modify, and use the reply
                 templates for personal or professional use. You may not resell or
                 redistribute our content as a competing product.
@@ -60,7 +60,7 @@ export default function TermsPage() {
                 Disclaimer
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Human Workplace is provided "as is" without any warranties, expressed
+                KindReply is provided "as is" without any warranties, expressed
                 or implied. We do not guarantee that our content will be suitable for
                 your specific situation.
               </p>
@@ -79,10 +79,10 @@ export default function TermsPage() {
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about these terms, please contact us at{" "}
                 <a
-                  href="mailto:hello@human-workplace.pages.dev"
+                  href="mailto:hello@kindreply.co"
                   className="text-foreground underline underline-offset-2 hover:text-stone-600"
                 >
-                  hello@human-workplace.pages.dev
+                  hello@kindreply.co
                 </a>
                 .
               </p>

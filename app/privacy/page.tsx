@@ -3,9 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Privacy Policy — Human Workplace",
+  title: "Privacy Policy — KindReply",
   description:
-    "Human Workplace does not collect personal data. We do not use cookies, analytics, or tracking. Read our full privacy policy.",
+    "KindReply does not collect personal data. We do not use cookies, analytics, or tracking. Read our full privacy policy.",
   alternates: {
     canonical: "/privacy/",
   },
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
             <div className="prose prose-stone max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                At Human Workplace, we take your privacy seriously. This policy
+                At KindReply, we take your privacy seriously. This policy
                 describes what information we collect and how we use it.
               </p>
 
@@ -41,7 +41,7 @@ export default function PrivacyPage() {
                 Information we do not collect
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Human Workplace is a static website. We do not collect, store, or
+                KindReply is a static website. We do not collect, store, or
                 process any personal information. Specifically:
               </p>
               <ul className="space-y-2 mb-6">
@@ -94,10 +94,10 @@ export default function PrivacyPage() {
                 If you have any questions about this privacy policy, please contact
                 us at{" "}
                 <a
-                  href="mailto:hello@human-workplace.pages.dev"
+                  href="mailto:hello@kindreply.co"
                   className="text-foreground underline underline-offset-2 hover:text-stone-600"
                 >
-                  hello@human-workplace.pages.dev
+                  hello@kindreply.co
                 </a>
                 .
               </p>

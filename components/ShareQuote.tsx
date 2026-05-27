@@ -105,11 +105,11 @@ export default function ShareQuote({ quote, title }: ShareQuoteProps) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-[#44403c]">{title}</p>
-              <p className="text-xs text-[#a8a29e] mt-0.5">Human Workplace</p>
+              <p className="text-xs text-[#a8a29e] mt-0.5">KindReply</p>
             </div>
             <div className="hidden sm:flex items-center gap-1.5 text-[#a8a29e]">
               <div className="w-6 h-6 rounded-full bg-[#e7e5e4] flex items-center justify-center">
-                <span className="text-[10px] font-semibold text-[#78716c]">HW</span>
+                <span className="text-[10px] font-semibold text-[#78716c]">KR</span>
               </div>
             </div>
           </div>

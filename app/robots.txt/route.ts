@@ -4,7 +4,7 @@ export function GET() {
   const body = `User-agent: *
 Allow: /
 
-Sitemap: https://human-workplace.pages.dev/sitemap.xml
+Sitemap: https://kindreply.co/sitemap.xml
 `;
   return new Response(body, {
     headers: {

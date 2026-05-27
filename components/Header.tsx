@@ -12,7 +12,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground hover:opacity-80 transition-opacity">
           <Heart className="h-5 w-5 text-stone-500" fill="currentColor" />
-          <span>Human Workplace</span>
+          <span>KindReply</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">

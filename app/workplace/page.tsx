@@ -5,17 +5,32 @@ import { categories, replies } from "@/data/replies";
 import { Clock, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Workplace Replies — Human Workplace",
+  title: "Workplace Replies — KindReply",
   description:
     "Browse all workplace reply templates. Resignation, burnout support, manager replies, difficult conversations, and layoff communication.",
   alternates: {
     canonical: "/workplace/",
   },
   openGraph: {
-    title: "Workplace Replies — Human Workplace",
+    title: "Workplace Replies — KindReply",
     description:
       "Browse all workplace reply templates. Resignation, burnout support, manager replies, and more.",
-    url: "https://human-workplace.pages.dev/workplace/",
+    url: "https://kindreply.co/workplace/",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Workplace Replies — KindReply",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Workplace Replies — KindReply",
+    description:
+      "Browse all workplace reply templates. Resignation, burnout support, manager replies, and more.",
+    images: ["/og-image.png"],
   },
 };
 

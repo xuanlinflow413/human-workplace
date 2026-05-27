@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://human-workplace.pages.dev"),
-  title: "Human Workplace — Real Professional Replies for Hard Moments",
+  metadataBase: new URL("https://kindreply.co"),
+  title: "KindReply — Real Professional Replies for Hard Moments",
   description:
     "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more. Professional, kind, and human.",
   keywords: [
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     "layoff communication",
     "manager replies",
   ],
-  authors: [{ name: "Human Workplace" }],
-  creator: "Human Workplace",
-  publisher: "Human Workplace",
+  authors: [{ name: "KindReply" }],
+  creator: "KindReply",
+  publisher: "KindReply",
   robots: {
     index: true,
     follow: true,
@@ -29,24 +29,33 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://human-workplace.pages.dev/",
-    siteName: "Human Workplace",
-    title: "Human Workplace — Real Professional Replies for Hard Moments",
+    url: "https://kindreply.co/",
+    siteName: "KindReply",
+    title: "KindReply — Real Professional Replies for Hard Moments",
     description:
       "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more. Professional, kind, and human.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "KindReply — Real Professional Replies for Hard Moments",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Human Workplace — Real Professional Replies for Hard Moments",
+    title: "KindReply — Real Professional Replies for Hard Moments",
     description:
       "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more.",
-    creator: "@humanworkplace",
+    creator: "@kindreply",
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: "/",
   },
   verification: {
-    google: "r79PY62ZMOSfpJOaPPb7ismHQA9KS2WupX3dwbYK8_o",
+    google: "UW3OyEIgcePlQwx_4GbTVMcITxfJU8K3W5uDAjHTctk",
   },
 };
 
@@ -60,7 +69,7 @@ export default function RootLayout({
       <head>
         <meta
           name="google-site-verification"
-          content="r79PY62ZMOSfpJOaPPb7ismHQA9KS2WupX3dwbYK8_o"
+          content="UW3OyEIgcePlQwx_4GbTVMcITxfJU8K3W5uDAjHTctk"
         />
         <script
           type="application/ld+json"
@@ -68,14 +77,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Human Workplace",
-              url: "https://human-workplace.pages.dev/",
+              name: "KindReply",
+              url: "https://kindreply.co/",
               description:
                 "A curated collection of real, professional, and emotionally intelligent workplace replies.",
               publisher: {
                 "@type": "Organization",
-                name: "Human Workplace",
-                url: "https://human-workplace.pages.dev/",
+                name: "KindReply",
+                url: "https://kindreply.co/",
               },
             }),
           }}

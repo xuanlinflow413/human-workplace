@@ -4,17 +4,32 @@ import Footer from "@/components/Footer";
 import { Heart, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "About — Human Workplace",
+  title: "About — KindReply",
   description:
-    "Human Workplace is a curated collection of real, professional, and emotionally intelligent workplace replies. No AI templates. No fluff.",
+    "KindReply is a curated collection of real, professional, and emotionally intelligent workplace replies. No AI templates. No fluff.",
   alternates: {
     canonical: "/about/",
   },
   openGraph: {
-    title: "About — Human Workplace",
+    title: "About — KindReply",
     description:
       "A curated collection of real, professional, and emotionally intelligent workplace replies.",
-    url: "https://human-workplace.pages.dev/about/",
+    url: "https://kindreply.co/about/",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About — KindReply",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — KindReply",
+    description:
+      "A curated collection of real, professional, and emotionally intelligent workplace replies.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -35,12 +50,12 @@ export default function AboutPage() {
             </nav>
 
             <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6">
-              About Human Workplace
+              About KindReply
             </h1>
 
             <div className="prose prose-stone max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Human Workplace is a curated collection of real, professional, and
+                KindReply is a curated collection of real, professional, and
                 emotionally intelligent workplace replies. We believe that the hardest
                 moments at work — resigning, addressing burnout, giving feedback, or
                 navigating layoffs — deserve words that are both effective and human.
@@ -110,10 +125,10 @@ export default function AboutPage() {
                 Have a suggestion for a reply we should add? Found something that could
                 be better? We would love to hear from you. Reach out at{" "}
                 <a
-                  href="mailto:hello@human-workplace.pages.dev"
+                  href="mailto:hello@kindreply.co"
                   className="text-foreground underline underline-offset-2 hover:text-stone-600"
                 >
-                  hello@human-workplace.pages.dev
+                  hello@kindreply.co
                 </a>
                 .
               </p>

@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const reply = getReplyBySlug(slug);
   if (!reply) {
     return {
-      title: "Page Not Found — Human Workplace",
+      title: "Page Not Found — KindReply",
       description: "The page you are looking for does not exist. Browse our workplace reply templates.",
     };
   }
@@ -47,15 +47,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: reply.metaTitle,
       description: reply.metaDescription,
-      url: `https://human-workplace.pages.dev/workplace/${reply.slug}/`,
+      url: `https://kindreply.co/workplace/${reply.slug}/`,
       type: "article",
       publishedTime: reply.updatedAt,
-      authors: ["Human Workplace"],
+      authors: ["KindReply"],
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: reply.metaTitle,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: reply.metaTitle,
       description: reply.metaDescription,
+      images: ["/og-image.png"],
     },
   };
 }
@@ -79,22 +88,22 @@ export default async function ReplyPage({ params }: Props) {
             "@type": "Article",
             headline: reply.h1,
             description: reply.metaDescription,
-            url: `https://human-workplace.pages.dev/workplace/${reply.slug}/`,
+            url: `https://kindreply.co/workplace/${reply.slug}/`,
             datePublished: reply.updatedAt,
             dateModified: reply.updatedAt,
             author: {
               "@type": "Organization",
-              name: "Human Workplace",
-              url: "https://human-workplace.pages.dev/",
+              name: "KindReply",
+              url: "https://kindreply.co/",
             },
             publisher: {
               "@type": "Organization",
-              name: "Human Workplace",
-              url: "https://human-workplace.pages.dev/",
+              name: "KindReply",
+              url: "https://kindreply.co/",
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://human-workplace.pages.dev/workplace/${reply.slug}/`,
+              "@id": `https://kindreply.co/workplace/${reply.slug}/`,
             },
           }),
         }}

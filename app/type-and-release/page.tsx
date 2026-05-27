@@ -23,8 +23,12 @@ export const metadata: Metadata = {
   creator: "KindReply",
   publisher: "KindReply",
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
   },
   openGraph: {
     type: "website",
