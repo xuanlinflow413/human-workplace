@@ -3,7 +3,7 @@ export const dynamic = "force-static";
 import { getAllSlugs } from "@/data/replies";
 
 export function GET() {
-  const baseUrl = "https://human-workplace.pages.dev";
+  const baseUrl = "https://kindreply.co";
   const slugs = getAllSlugs();
 
   const staticPaths = [
@@ -12,6 +12,7 @@ export function GET() {
     { path: "/about/", priority: "0.5", changefreq: "monthly" },
     { path: "/privacy/", priority: "0.3", changefreq: "yearly" },
     { path: "/terms/", priority: "0.3", changefreq: "yearly" },
+    { path: "/type-and-release/", priority: "0.7", changefreq: "monthly" },
   ];
 
   const dynamicPaths = slugs.map((slug) => ({

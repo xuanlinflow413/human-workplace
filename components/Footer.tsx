@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl px-4 py-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <p className="text-sm font-semibold text-foreground">Human Workplace</p>
+            <p className="text-sm font-semibold text-foreground">KindReply</p>
             <p className="text-xs text-muted-foreground mt-1">
               Real replies for hard moments. Professional, kind, and human.
             </p>
@@ -14,6 +14,9 @@ export default function Footer() {
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             <Link href="/workplace/" className="hover:text-foreground transition-colors">
               Workplace
+            </Link>
+            <Link href="/type-and-release/" className="hover:text-foreground transition-colors">
+              Type & Release
             </Link>
             <Link href="/about/" className="hover:text-foreground transition-colors">
               About
@@ -27,7 +30,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-border text-xs text-muted-foreground text-center">
-          &copy; {new Date().getFullYear()} Human Workplace. All rights reserved.
+          &copy; {new Date().getFullYear()} KindReply. All rights reserved.
         </div>
       </div>
     </footer>
