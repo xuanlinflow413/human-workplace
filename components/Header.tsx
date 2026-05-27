@@ -22,6 +22,9 @@ export default function Header() {
           <Link href="/about/" className="hover:text-foreground transition-colors">
             About
           </Link>
+          <Link href="/cover-letter-writer/" className="text-xs text-muted-foreground/70 hover:text-muted-foreground transition-colors border-l border-border pl-4">
+            Cover Letter
+          </Link>
         </nav>
 
         <button
@@ -41,6 +44,13 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
           >
             Workplace
+          </Link>
+          <Link
+            href="/cover-letter-writer/"
+            className="block text-sm font-medium text-muted-foreground hover:text-foreground"
+            onClick={() => setMobileOpen(false)}
+          >
+            Cover Letter
           </Link>
           <Link
             href="/about/"

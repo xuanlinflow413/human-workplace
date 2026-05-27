@@ -13,6 +13,7 @@ export function GET() {
     { path: "/privacy/", priority: "0.3", changefreq: "yearly" },
     { path: "/terms/", priority: "0.3", changefreq: "yearly" },
     { path: "/type-and-release/", priority: "0.7", changefreq: "monthly" },
+    { path: "/cover-letter-writer/", priority: "0.7", changefreq: "monthly" },
   ];
 
   const dynamicPaths = slugs.map((slug) => ({

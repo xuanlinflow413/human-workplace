@@ -18,6 +18,9 @@ export default function Footer() {
             <Link href="/type-and-release/" className="hover:text-foreground transition-colors">
               Type & Release
             </Link>
+            <Link href="/cover-letter-writer/" className="hover:text-foreground transition-colors">
+              Cover Letter
+            </Link>
             <Link href="/about/" className="hover:text-foreground transition-colors">
               About
             </Link>

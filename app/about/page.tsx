@@ -4,32 +4,17 @@ import Footer from "@/components/Footer";
 import { Heart, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "About — KindReply",
+  title: "About — Human Workplace",
   description:
-    "KindReply is a curated collection of real, professional, and emotionally intelligent workplace replies. No AI templates. No fluff.",
+    "Human Workplace is a curated collection of real, professional, and emotionally intelligent workplace replies. No AI templates. No fluff.",
   alternates: {
     canonical: "/about/",
   },
   openGraph: {
-    title: "About — KindReply",
+    title: "About — Human Workplace",
     description:
       "A curated collection of real, professional, and emotionally intelligent workplace replies.",
     url: "https://kindreply.co/about/",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "About — KindReply",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About — KindReply",
-    description:
-      "A curated collection of real, professional, and emotionally intelligent workplace replies.",
-    images: ["/og-image.png"],
   },
 };
 
@@ -50,12 +35,12 @@ export default function AboutPage() {
             </nav>
 
             <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6">
-              About KindReply
+              About Human Workplace
             </h1>
 
             <div className="prose prose-stone max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                KindReply is a curated collection of real, professional, and
+                Human Workplace is a curated collection of real, professional, and
                 emotionally intelligent workplace replies. We believe that the hardest
                 moments at work — resigning, addressing burnout, giving feedback, or
                 navigating layoffs — deserve words that are both effective and human.

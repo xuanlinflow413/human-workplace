@@ -2,7 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { categories, replies } from "@/data/replies";
-import { Heart, ArrowRight, MessageSquare, Clock, Quote, Feather } from "lucide-react";
+import { Heart, ArrowRight, MessageSquare, Clock, Quote, Feather, FileText } from "lucide-react";
 
 const mostShared = [
   replies.find((r) => r.slug === "how-to-resign-gracefully")!,
@@ -159,7 +159,7 @@ export default function HomePage() {
 
         {/* Type & Release card */}
         <section className="px-4 py-10 border-t border-border bg-muted/20">
-          <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-5xl space-y-4">
             <Link
               href="/type-and-release/"
               className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
@@ -176,6 +176,25 @@ export default function HomePage() {
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
                   A private space to write it down before you send it.
+                </p>
+              </div>
+            </Link>
+            <Link
+              href="/cover-letter-writer/"
+              className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-100">
+                <FileText className="h-5 w-5 text-stone-500" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-foreground group-hover:text-stone-700 transition-colors">
+                    Cover Letter Writer
+                  </h3>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Paste a job description, add one real detail, get a human-sounding first draft.
                 </p>
               </div>
             </Link>

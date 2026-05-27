@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const reply = getReplyBySlug(slug);
   if (!reply) {
     return {
-      title: "Page Not Found — KindReply",
+      title: "Page Not Found — Human Workplace",
       description: "The page you are looking for does not exist. Browse our workplace reply templates.",
     };
   }
@@ -50,21 +50,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://kindreply.co/workplace/${reply.slug}/`,
       type: "article",
       publishedTime: reply.updatedAt,
-      authors: ["KindReply"],
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: reply.metaTitle,
-        },
-      ],
+      authors: ["Human Workplace"],
     },
     twitter: {
       card: "summary_large_image",
       title: reply.metaTitle,
       description: reply.metaDescription,
-      images: ["/og-image.png"],
     },
   };
 }
@@ -93,12 +84,12 @@ export default async function ReplyPage({ params }: Props) {
             dateModified: reply.updatedAt,
             author: {
               "@type": "Organization",
-              name: "KindReply",
+              name: "Human Workplace",
               url: "https://kindreply.co/",
             },
             publisher: {
               "@type": "Organization",
-              name: "KindReply",
+              name: "Human Workplace",
               url: "https://kindreply.co/",
             },
             mainEntityOfPage: {
