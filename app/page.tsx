@@ -2,17 +2,23 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { categories, replies } from "@/data/replies";
-import { Heart, ArrowRight, MessageSquare, Clock, Quote, Feather, FileText } from "lucide-react";
+import PopularWorkplaceSituations from "@/components/PopularWorkplaceSituations";
+import EmailCapture from "@/components/EmailCapture";
+import { Heart, ArrowRight, MessageSquare, Clock, Quote, Feather, FileText, Sparkles } from "lucide-react";
 
 const mostShared = [
-  replies.find((r) => r.slug === "how-to-resign-gracefully")!,
-  replies.find((r) => r.slug === "email-template-for-burnout-leave")!,
-  replies.find((r) => r.slug === "manager-layoff-announcement-email")!,
-  replies.find((r) => r.slug === "how-to-address-performance-issues-with-empathy")!,
-  replies.find((r) => r.slug === "giving-negative-feedback-that-lands-well")!,
+  "how-to-resign-gracefully",
+  "email-template-for-burnout-leave",
+  "manager-layoff-announcement-email",
+  "how-to-address-performance-issues-with-empathy",
+  "giving-negative-feedback-that-lands-well",
 ];
 
 export default function HomePage() {
+  const mostSharedReplies = mostShared
+    .map((slug) => replies.find((r) => r.slug === slug))
+    .filter(Boolean);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -33,15 +39,27 @@ export default function HomePage() {
               Copy-ready workplace replies for resignation, burnout, difficult
               conversations, and more. Professional, kind, and human.
             </p>
-            <Link
-              href="/workplace/"
-              className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
-            >
-              <span>Browse all replies</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href="/ai-prd-generator/"
+                className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
+              >
+                <Sparkles className="h-4 w-4" />
+                <span>AI PRD Generator</span>
+              </Link>
+              <Link
+                href="/workplace/"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+              >
+                <span>Browse all replies</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </section>
+
+        {/* Popular Workplace Situations */}
+        <PopularWorkplaceSituations />
 
         {/* Most Shared Replies */}
         <section className="px-4 py-12 border-t border-border">
@@ -56,22 +74,22 @@ export default function HomePage() {
               The ones people screenshot, save, and send to a friend
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {mostShared.map((reply) => (
+              {mostSharedReplies.map((reply) => (
                 <Link
-                  key={reply.id}
-                  href={`/workplace/${reply.slug}/`}
+                  key={reply!.id}
+                  href={`/workplace/${reply!.slug}/`}
                   className="group rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xs font-medium text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
-                      {reply.categoryLabel}
+                      {reply!.categoryLabel}
                     </span>
                   </div>
                   <blockquote className="text-base font-medium text-foreground leading-relaxed mb-3 group-hover:text-stone-700 transition-colors">
-                    &ldquo;{reply.shareQuote}&rdquo;
+                    &ldquo;{reply!.shareQuote}&rdquo;
                   </blockquote>
                   <p className="text-xs text-muted-foreground">
-                    — {reply.title}
+                    — {reply!.title}
                   </p>
                 </Link>
               ))}
@@ -157,9 +175,28 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Type & Release card */}
+        {/* Tool Cards */}
         <section className="px-4 py-10 border-t border-border bg-muted/20">
           <div className="mx-auto max-w-5xl space-y-4">
+            <Link
+              href="/ai-prd-generator/"
+              className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-100">
+                <Sparkles className="h-5 w-5 text-stone-500" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-foreground group-hover:text-stone-700 transition-colors">
+                    AI PRD Generator
+                  </h3>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Generate structured PRDs for Claude Code, Cursor, Bolt, and other AI coding tools. Free, no signup.
+                </p>
+              </div>
+            </Link>
             <Link
               href="/type-and-release/"
               className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
@@ -170,7 +207,7 @@ export default function HomePage() {
               <div className="flex-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold text-foreground group-hover:text-stone-700 transition-colors">
-                    Type & Release
+                    Type &amp; Release
                   </h3>
                   <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                 </div>
@@ -287,6 +324,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Email Capture */}
+        <EmailCapture />
       </main>
 
       <Footer />

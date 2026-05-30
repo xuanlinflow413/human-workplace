@@ -1,0 +1,44 @@
+export const dynamic = "force-static";
+
+import type { MetadataRoute } from "next";
+import { getAllSlugs } from "../data/replies";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://kindreply.co";
+
+  // Static routes — automatically discovered from the filesystem
+  // Any new page.tsx added to app/ will be picked up by Next.js automatically
+  // This list covers routes that need explicit priority/changefreq config
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/ai-prd-generator/`, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${baseUrl}/`, priority: 1.0, changeFrequency: "weekly" },
+    { url: `${baseUrl}/about/`, priority: 0.5, changeFrequency: "monthly" },
+    { url: `${baseUrl}/privacy/`, priority: 0.3, changeFrequency: "yearly" },
+    { url: `${baseUrl}/terms/`, priority: 0.3, changeFrequency: "yearly" },
+    { url: `${baseUrl}/type-and-release/`, priority: 0.7, changeFrequency: "monthly" },
+    { url: `${baseUrl}/workplace/`, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${baseUrl}/workplace/categories/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-examples/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-career-change/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-project-manager/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-software-engineer/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-internship/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-customer-service/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-marketing-manager/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-data-analyst/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-for-teacher/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-mistakes/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-with-no-experience/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/job-search/`, priority: 0.9, changeFrequency: "weekly" },
+  ];
+
+  // Dynamic routes — automatically generated from data source
+  const slugs = getAllSlugs();
+  const dynamicRoutes: MetadataRoute.Sitemap = slugs.map((slug) => ({
+    url: `${baseUrl}/workplace/${slug}/`,
+    priority: 0.8,
+    changeFrequency: "weekly" as const,
+  }));
+
+  return [...staticRoutes, ...dynamicRoutes];
+}

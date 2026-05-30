@@ -9,6 +9,8 @@ import {
   getRelatedReplies,
   getAllSlugs,
 } from "@/data/replies";
+import RelatedReplies from "@/components/RelatedReplies";
+import EmailCapture from "@/components/EmailCapture";
 import Link from "next/link";
 import {
   Clock,
@@ -263,6 +265,19 @@ export default async function ReplyPage({ params }: Props) {
             <ShareQuote quote={reply.shareQuote} title={reply.title} />
           </div>
         </section>
+
+        {/* Related Replies - Enhanced */}
+        <RelatedReplies
+          currentSlug={reply.slug}
+          currentCategory={reply.category}
+        />
+
+        {/* Email Capture */}
+        <EmailCapture
+          title="Loved this reply?"
+          description="Get new workplace templates delivered to your inbox. One email per week, no spam."
+          context="inline"
+        />
 
         {/* Related */}
         {related.length > 0 && (

@@ -1896,3 +1896,7 @@ export function getRelatedReplies(ids: string[]): Reply[] {
 export function getAllSlugs(): string[] {
   return replies.map((r) => r.slug);
 }
+
+export function getAllReplies(): Reply[] {
+  return replies;
+}

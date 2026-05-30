@@ -41,6 +41,26 @@ export default function WorkplacePage() {
             <p className="text-muted-foreground max-w-xl">
               Real replies for the hardest moments at work. Copy, personalize, and send with confidence.
             </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                href="/workplace/categories/"
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Browse by category
+              </Link>
+              <Link
+                href="/cover-letter-examples/"
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Cover letter examples
+              </Link>
+              <Link
+                href="/type-and-release/"
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Type &amp; Release
+              </Link>
+            </div>
           </div>
         </section>
 
