@@ -78,7 +78,7 @@ export default function TermsPage() {
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about these terms, please contact us at{" "}
-                <span className="text-foreground">hello@kindreply.co</span>
+                <span className="text-foreground">hello [at] kindreply dot co</span>
                 .
               </p>
             </div>

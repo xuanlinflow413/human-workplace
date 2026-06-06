@@ -109,7 +109,7 @@ export default function AboutPage() {
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Have a suggestion for a reply we should add? Found something that could
                 be better? We would love to hear from you. Reach out at{" "}
-                <span className="text-foreground">hello@kindreply.co</span>
+                <span className="text-foreground">hello [at] kindreply dot co</span>
                 .
               </p>
 

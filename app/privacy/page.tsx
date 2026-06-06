@@ -93,7 +93,7 @@ export default function PrivacyPage() {
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about this privacy policy, please contact
                 us at{" "}
-                <span className="text-foreground">hello@kindreply.co</span>
+                <span className="text-foreground">hello [at] kindreply dot co</span>
                 .
               </p>
             </div>

@@ -71,6 +71,11 @@ export default function RootLayout({
           name="google-site-verification"
           content="r79PY62ZMOSfpJOaPPb7ismHQA9KS2WupX3dwbYK8_o"
         />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://kindreply.co/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content="https://kindreply.co/og-image.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
