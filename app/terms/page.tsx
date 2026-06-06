@@ -60,7 +60,7 @@ export default function TermsPage() {
                 Disclaimer
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                KindReply is provided "as is" without any warranties, expressed
+                KindReply is provided &quot;as is&quot; without any warranties, expressed
                 or implied. We do not guarantee that our content will be suitable for
                 your specific situation.
               </p>

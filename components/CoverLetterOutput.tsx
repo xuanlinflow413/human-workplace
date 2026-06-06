@@ -1,36 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Copy, Check, RefreshCw, Trash2 } from "lucide-react";
+import UpgradePrompt from "./UpgradePrompt";
 
 interface CoverLetterOutputProps {
   text: string;
   onRegenerate: () => void;
   onClear: () => void;
+  isLoading?: boolean;
 }
 
 export default function CoverLetterOutput({
   text,
   onRegenerate,
   onClear,
+  isLoading,
 }: CoverLetterOutputProps) {
-  const [editableText, setEditableText] = useState(text);
   const [copied, setCopied] = useState(false);
-
-  // Keep editableText in sync when text prop changes (regenerate)
-  useState(() => {
-    setEditableText(text);
-  });
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleCopy = async () => {
-    if (!editableText) return;
+    const currentText = textareaRef.current?.value || text;
+    if (!currentText) return;
     try {
-      await navigator.clipboard.writeText(editableText);
+      await navigator.clipboard.writeText(currentText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       const textarea = document.createElement("textarea");
-      textarea.value = editableText;
+      textarea.value = currentText;
       document.body.appendChild(textarea);
       textarea.select();
       document.execCommand("copy");
@@ -44,7 +43,9 @@ export default function CoverLetterOutput({
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-foreground">Your draft</h2>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <UpgradePrompt source="pdf" compact />
+          <UpgradePrompt source="optimize" compact />
           <button
             onClick={handleCopy}
             className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
@@ -68,11 +69,16 @@ export default function CoverLetterOutput({
           </button>
           <button
             onClick={onRegenerate}
-            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800 transition-all"
+            disabled={isLoading}
+            className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+              isLoading
+                ? "bg-stone-100 text-stone-400 cursor-not-allowed"
+                : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800"
+            }`}
             aria-label="Regenerate cover letter"
           >
-            <RefreshCw className="h-3.5 w-3.5" />
-            <span>Regenerate</span>
+            <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`} />
+            <span>{isLoading ? "Generating..." : "Regenerate"}</span>
           </button>
           <button
             onClick={onClear}
@@ -86,9 +92,10 @@ export default function CoverLetterOutput({
       </div>
 
       <textarea
-        value={editableText}
-        onChange={(e) => setEditableText(e.target.value)}
-        className="w-full min-h-[280px] rounded-xl border border-border bg-card p-5 text-sm leading-relaxed text-foreground focus:outline-none focus:ring-2 focus:ring-stone-300 resize-y"
+        key={text}
+        ref={textareaRef}
+        defaultValue={text}
+        className="w-full min-h-[280px] rounded-xl border border-border bg-card p-4 sm:p-5 text-sm leading-relaxed text-foreground focus:outline-none focus:ring-2 focus:ring-stone-300 resize-y"
       />
 
       <p className="text-xs text-muted-foreground">
