@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { Heart, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "About — Human Workplace",
+  title: "About KindReply — Human Workplace Replies",
   description:
     "Human Workplace is a curated collection of real, professional, and emotionally intelligent workplace replies. No AI templates. No fluff.",
   alternates: {
@@ -109,12 +109,7 @@ export default function AboutPage() {
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Have a suggestion for a reply we should add? Found something that could
                 be better? We would love to hear from you. Reach out at{" "}
-                <a
-                  href="mailto:hello@kindreply.co"
-                  className="text-foreground underline underline-offset-2 hover:text-stone-600"
-                >
-                  hello@kindreply.co
-                </a>
+                <span className="text-foreground">hello@kindreply.co</span>
                 .
               </p>
 

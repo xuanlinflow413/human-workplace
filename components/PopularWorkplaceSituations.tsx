@@ -8,8 +8,8 @@ export default function PopularWorkplaceSituations() {
   const popularSlugs = [
     "how-to-resign-gracefully",
     "two-weeks-notice-email",
-    "how-to-ask-for-a-raise",
-    "how-to-tell-your-boss-youre-overwhelmed",
+    "asking-for-help-at-work",
+    "telling-your-boss-youre-overwhelmed",
     "how-to-ask-for-a-mental-health-day",
     "giving-negative-feedback-that-lands-well",
     "how-to-say-no-to-unpaid-overtime",

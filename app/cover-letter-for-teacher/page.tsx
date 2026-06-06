@@ -304,7 +304,7 @@ export default function TeacherPage() {
               </p>
             </Link>
             <Link
-              href="/workplace/how-to-ask-for-a-raise/"
+              href="/workplace/asking-for-help-at-work/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
               <p className="font-medium text-[#1A1A1A]">

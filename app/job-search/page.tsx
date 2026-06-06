@@ -177,14 +177,14 @@ export default function JobSearchPage() {
               <p className="mt-1 text-sm text-[#6B6B6B]">Leave with your head high</p>
             </Link>
             <Link
-              href="/workplace/how-to-ask-for-a-raise/"
+              href="/workplace/asking-for-help-at-work/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
               <p className="font-medium text-[#1A1A1A]">How to Ask for a Raise</p>
               <p className="mt-1 text-sm text-[#6B6B6B]">Make the case with data</p>
             </Link>
             <Link
-              href="/workplace/how-to-tell-your-boss-youre-overwhelmed/"
+              href="/workplace/telling-your-boss-youre-overwhelmed/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
               <p className="font-medium text-[#1A1A1A]">Telling Your Boss You Are Overwhelmed</p>

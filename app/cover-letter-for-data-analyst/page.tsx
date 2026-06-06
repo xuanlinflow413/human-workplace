@@ -304,7 +304,7 @@ export default function DataAnalystPage() {
               </p>
             </Link>
             <Link
-              href="/workplace/how-to-tell-your-boss-youre-overwhelmed/"
+              href="/workplace/telling-your-boss-youre-overwhelmed/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
               <p className="font-medium text-[#1A1A1A]">

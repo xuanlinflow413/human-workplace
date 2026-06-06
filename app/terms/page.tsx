@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Terms of Service — KindReply",
+  title: "Terms of Service — KindReply User Terms",
   description:
     "By using KindReply, you agree to these terms. Our content is for informational purposes only.",
   alternates: {
@@ -78,12 +78,7 @@ export default function TermsPage() {
               </h2>
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about these terms, please contact us at{" "}
-                <a
-                  href="mailto:hello@kindreply.co"
-                  className="text-foreground underline underline-offset-2 hover:text-stone-600"
-                >
-                  hello@kindreply.co
-                </a>
+                <span className="text-foreground">hello@kindreply.co</span>
                 .
               </p>
             </div>

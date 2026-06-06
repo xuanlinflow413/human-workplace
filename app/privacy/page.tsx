@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Privacy Policy — KindReply",
+  title: "Privacy Policy — KindReply Data Use and Privacy",
   description:
     "KindReply does not collect personal data. We do not use cookies, analytics, or tracking. Read our full privacy policy.",
   alternates: {
@@ -93,12 +93,7 @@ export default function PrivacyPage() {
               <p className="text-muted-foreground leading-relaxed">
                 If you have any questions about this privacy policy, please contact
                 us at{" "}
-                <a
-                  href="mailto:hello@kindreply.co"
-                  className="text-foreground underline underline-offset-2 hover:text-stone-600"
-                >
-                  hello@kindreply.co
-                </a>
+                <span className="text-foreground">hello@kindreply.co</span>
                 .
               </p>
             </div>

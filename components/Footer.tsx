@@ -27,6 +27,9 @@ export default function Footer() {
             <Link href="/cover-letter-examples/" className="hover:text-foreground transition-colors">
               Cover Letters
             </Link>
+            <Link href="/cover-letter-mistakes/" className="hover:text-foreground transition-colors">
+              Cover Letter Mistakes
+            </Link>
             <Link href="/job-search/" className="hover:text-foreground transition-colors">
               Job Search
             </Link>

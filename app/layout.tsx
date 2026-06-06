@@ -34,6 +34,14 @@ export const metadata: Metadata = {
     title: "Human Workplace — Real Professional Replies for Hard Moments",
     description:
       "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more. Professional, kind, and human.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "KindReply — human cover letters and workplace replies",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -41,6 +49,7 @@ export const metadata: Metadata = {
     description:
       "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more.",
     creator: "@humanworkplace",
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: "/",
@@ -65,19 +74,55 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Human Workplace",
-              url: "https://kindreply.co/",
-              description:
-                "A curated collection of real, professional, and emotionally intelligent workplace replies.",
-              publisher: {
-                "@type": "Organization",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
                 name: "Human Workplace",
                 url: "https://kindreply.co/",
+                description:
+                  "A curated collection of real, professional, and emotionally intelligent workplace replies.",
+                publisher: {
+                  "@type": "Organization",
+                  name: "Human Workplace",
+                  url: "https://kindreply.co/",
+                },
               },
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "KindReply",
+                    item: "https://kindreply.co/",
+                  },
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "What is KindReply?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "KindReply provides human-sounding cover letter drafts and workplace reply examples for difficult professional moments.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Can I copy and adapt the examples?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes. KindReply examples are designed to be copied, edited, and adapted to your own situation before sending.",
+                    },
+                  },
+                ],
+              },
+            ]),
           }}
         />
       </head>

@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/workplace/`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${baseUrl}/workplace/categories/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-examples/`, priority: 0.8, changeFrequency: "weekly" },
+    { url: `${baseUrl}/cover-letter-writer/`, priority: 0.95, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-for-career-change/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-for-project-manager/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-for-software-engineer/`, priority: 0.8, changeFrequency: "weekly" },

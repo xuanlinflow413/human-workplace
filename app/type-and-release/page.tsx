@@ -257,7 +257,7 @@ export default function TypeAndReleasePage() {
                 <li>
                   <strong className="text-foreground">When overwhelmed by workload:</strong>{" "}
                   Clarify your thoughts before{" "}
-                  <a href="/workplace/how-to-tell-your-boss-youre-overwhelmed/" className="text-foreground underline">
+                  <a href="/workplace/telling-your-boss-youre-overwhelmed/" className="text-foreground underline">
                     talking to your manager
                   </a>.
                 </li>
@@ -343,15 +343,15 @@ export default function TypeAndReleasePage() {
                 next. If your writing revealed a workplace issue that needs
                 addressing, KindReply has templates to help you communicate
                 professionally: from{" "}
-                <a href="/workplace/how-to-ask-for-a-raise/" className="text-foreground underline">
+                <a href="/workplace/asking-for-help-at-work/" className="text-foreground underline">
                   asking for a raise
                 </a>{" "}
                 to{" "}
-                <a href="/workplace/how-to-decline-extra-work/" className="text-foreground underline">
+                <a href="/workplace/saying-no-to-unpaid-overtime/" className="text-foreground underline">
                   declining extra work
                 </a>{" "}
                 to{" "}
-                <a href="/workplace/how-to-respond-to-a-rude-email-professionally/" className="text-foreground underline">
+                <a href="/workplace/talking-to-a-toxic-manager-calmly/" className="text-foreground underline">
                   responding to rude emails
                 </a>.
               </p>

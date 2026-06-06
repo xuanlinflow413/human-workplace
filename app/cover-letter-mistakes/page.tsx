@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "7 Cover Letter Mistakes That Cost You the Interview | KindReply",
   description:
-    "The most common cover letter mistakes — and how to fix them. Learn what hiring managers actually see when they read your letter, and how to avoid the errors that get applications rejected.",
+    "Avoid common cover letter mistakes that make applications feel generic, unclear, or risky — with practical fixes for stronger drafts.",
   keywords: [
     "cover letter mistakes",
     "common cover letter errors",

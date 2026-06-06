@@ -6,7 +6,7 @@ import AI_PRD_Generator from "./AI_PRD_Generator";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kindreply.co"),
-  title: "AI PRD Generator — Create Product Requirement Documents for AI Coding",
+  title: "AI PRD Generator — Create Product Requirements Fast",
   description:
     "Generate structured PRDs for Claude Code, Cursor, Bolt and other AI coding tools. Free online AI PRD generator with Markdown export.",
   keywords: [
