@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Heart, Sparkles } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,10 +16,6 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <Link href="/ai-prd-generator/" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-            <Sparkles className="h-3.5 w-3.5" />
-            AI PRD
-          </Link>
           <Link href="/workplace/" className="hover:text-foreground transition-colors">
             Workplace
           </Link>
@@ -48,13 +44,6 @@ export default function Header() {
 
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-background px-4 py-4 space-y-3">
-          <Link
-            href="/ai-prd-generator/"
-            className="block text-sm font-medium text-muted-foreground hover:text-foreground"
-            onClick={() => setMobileOpen(false)}
-          >
-            AI PRD Generator
-          </Link>
           <Link
             href="/workplace/"
             className="block text-sm font-medium text-muted-foreground hover:text-foreground"

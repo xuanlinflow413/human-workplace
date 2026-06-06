@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Any new page.tsx added to app/ will be picked up by Next.js automatically
   // This list covers routes that need explicit priority/changefreq config
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${baseUrl}/ai-prd-generator/`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${baseUrl}/`, priority: 1.0, changeFrequency: "weekly" },
     { url: `${baseUrl}/about/`, priority: 0.5, changeFrequency: "monthly" },
     { url: `${baseUrl}/privacy/`, priority: 0.3, changeFrequency: "yearly" },

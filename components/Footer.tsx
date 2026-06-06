@@ -12,9 +12,6 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <Link href="/ai-prd-generator/" className="hover:text-foreground transition-colors">
-              AI PRD Generator
-            </Link>
             <Link href="/workplace/" className="hover:text-foreground transition-colors">
               Workplace
             </Link>
