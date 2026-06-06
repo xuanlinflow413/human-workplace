@@ -176,7 +176,7 @@ I would love to stay in touch. Coffee sometime?
     title: "The Two-Week Notice That Does Not Overthink It",
     h1: "Two Weeks Notice Email: A Clear, Respectful Template",
     metaTitle:
-      "Two Weeks Notice Email Template: Professional & Respectful | KindReply",
+      "Two Weeks Notice Email Template | KindReply",
     metaDescription:
       "A straightforward two weeks notice email that covers the essentials without over-explaining. Copy-ready.",
     situation: "You need to give notice, and you do not want to write a novel. You want something clean, respectful, and done — so you can focus on the actual conversation, not the wording.",
@@ -414,7 +414,7 @@ I appreciate your support during this time.
     title: "The Conversation You Keep Putting Off",
     h1: "How to Talk to Your Manager About Burnout",
     metaTitle:
-      "How to Talk to Your Manager About Burnout: What to Say | KindReply",
+      "Talk to Your Manager About Burnout | KindReply",
     metaDescription:
       "A guide for having the burnout conversation with your manager. Includes what to say, what not to say, and how to prepare.",
     situation: "You have been struggling for weeks, maybe months. Every morning is harder than the last. You know you need to talk to your manager, but the thought of saying the words out loud makes your chest tight. You need a script that feels honest without feeling vulnerable.",
@@ -493,7 +493,7 @@ I am open to other ideas too. What do you think?"`,
     title: "When Someone on Your Team Says They Are Burnt Out",
     h1: "How to Respond When a Team Member Says They Are Burnt Out",
     metaTitle:
-      "Manager Response to Burnout: Supportive Email Template | KindReply",
+      "Manager Response to Burnout: Email Template | KindReply",
     metaDescription:
       "A manager's guide to responding to burnout with empathy and action. Includes what to say and what to do next.",
     situation: "They just told you. Maybe in a one-on-one, maybe over Slack, maybe with tears. However it came out, they trusted you with something hard. Now you need to respond in a way that makes them feel heard — and leads to actual change, not just sympathy.",
@@ -586,7 +586,7 @@ Let us talk again after you have had a chance to connect with them.
     title: "Noticing When Someone Is Not Okay",
     h1: "How to Empathize with a Struggling Employee: What to Say",
     metaTitle:
-      "Empathizing with a Struggling Employee: Manager's Guide | KindReply",
+      "Empathize with a Struggling Employee | KindReply",
     metaDescription:
       "What to say when an employee is going through a hard time. A manager's guide to empathy without overstepping.",
     situation: "You have watched them fade. The person who used to light up in meetings is now quiet. The reliable performer is missing deadlines. You do not know what is going on, but you know something is. You want to reach out without being intrusive, without making them perform their pain for you.",
@@ -651,7 +651,7 @@ I will check in with you [frequency: weekly / biweekly] to see how you are doing
     title: "The Performance Conversation Nobody Wants to Have",
     h1: "How to Address Performance Issues with Empathy: Manager's Guide",
     metaTitle:
-      "Addressing Performance Issues with Empathy: What to Say | KindReply",
+      "Performance Issues with Empathy: What to Say | KindReply",
     metaDescription:
       "A manager's guide to discussing performance issues without destroying morale. Includes email template and conversation framework.",
     situation: "You have been avoiding it. The missed deadlines, the dropped balls, the conversations you have had in your head a dozen times. Now you have to actually say it out loud — and you need to do it in a way that preserves their dignity while being clear about what needs to change.",
@@ -734,7 +734,7 @@ I believe you can do this. Let us figure out how."`,
     title: "Feedback That Actually Lands",
     h1: "Giving Negative Feedback That Lands Well: A Manager's Template",
     metaTitle:
-      "Giving Negative Feedback That Lands Well: Email & Conversation | KindReply",
+      "Giving Negative Feedback Well: Email Script | KindReply",
     metaDescription:
       "How to deliver negative feedback so it is heard, not rejected. A real manager's template for difficult conversations.",
     situation: "You have feedback they need to hear. Not the easy kind — the kind that stings. You have seen them shut down before, or get defensive, or nod along and change nothing. This time you want to say it in a way they can actually hear, absorb, and act on.",
@@ -975,7 +975,7 @@ I will hold office hours this week for anyone who wants to talk. Here is my sche
     title: "Reaching Out When Someone Just Lost Their Job",
     h1: "What to Say to Someone Who Got Laid Off: A Supportive Guide",
     metaTitle:
-      "What to Say to Someone Who Got Laid Off: Supportive Messages | KindReply",
+      "What to Say to Someone Laid Off | KindReply",
     metaDescription:
       "The right words when a colleague gets laid off. What to say, what not to say, and how to actually help.",
     situation: "You just got the message, or saw the LinkedIn post, or heard through someone else. They are gone. You want to say something, but everything you think of sounds hollow — let me know if you need anything feels like nothing, and everything happens for a reason feels like an insult.",
@@ -1064,7 +1064,7 @@ Please stay in touch. I want to know where you land next — it will be somewher
     title: "The Hardest Email a Leader Ever Writes",
     h1: "How to Communicate Layoffs to Your Team: A Leader's Framework",
     metaTitle:
-      "How to Communicate Layoffs to Your Team: Leader's Guide | KindReply",
+      "Communicate Layoffs to Your Team: Leader Guide | KindReply",
     metaDescription:
       "A leader's framework for communicating layoffs with dignity. Includes email template, talking points, and follow-up strategy.",
     situation: "You have been up all night, or maybe you have not slept at all. The decisions were made, the conversations happened behind closed doors, and now you have to tell everyone else. You need to be clear, you need to be compassionate, and you need to give people a reason to still trust you tomorrow.",
