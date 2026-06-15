@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Check, Coins, Crown, Loader2, Sparkles } from "lucide-react";
+import { useAnalytics } from "@/lib/analytics";
 
 const API_BASE = "https://api.kindreply.co";
 
 type CheckoutPlan = "plan_kindreply_jobpack" | "plan_kindreply_pro";
+
+const planDetails: Record<CheckoutPlan, { name: string; price: string }> = {
+  plan_kindreply_jobpack: { name: "Job Pack", price: "$4.99" },
+  plan_kindreply_pro: { name: "KindReply Pro", price: "$9.99" },
+};
 
 type StoredUser = {
   id?: string;
@@ -42,16 +48,36 @@ function getLoginUrl() {
 export default function PricingClient() {
   const [loadingPlan, setLoadingPlan] = useState<CheckoutPlan | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { trackCheckoutStarted, trackCheckoutSuccess, trackEntitlementActivated, trackLoginStart } = useAnalytics();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("checkout") !== "success") return;
+
+    const rawPlanId = params.get("plan") || params.get("plan_id") || "plan_kindreply_jobpack";
+    const planId = rawPlanId in planDetails ? (rawPlanId as CheckoutPlan) : "plan_kindreply_jobpack";
+    const eventKey = `kindreply_checkout_success_tracked_${planId}_${window.location.search}`;
+    if (window.sessionStorage.getItem(eventKey)) return;
+    window.sessionStorage.setItem(eventKey, "1");
+
+    const plan = planDetails[planId];
+
+    trackCheckoutSuccess(planId, plan.name);
+    trackEntitlementActivated(planId, plan.name);
+  }, [trackCheckoutSuccess, trackEntitlementActivated]);
 
   const startCheckout = async (planId: CheckoutPlan) => {
+    const plan = planDetails[planId];
     const user = getStoredUser();
     const userId = user?.email || user?.id;
 
     if (!userId) {
+      trackLoginStart("pricing_checkout");
       window.location.href = getLoginUrl();
       return;
     }
 
+    trackCheckoutStarted(planId, plan.name, plan.price, "pricing");
     setLoadingPlan(planId);
     setError(null);
 
@@ -64,7 +90,7 @@ export default function PricingClient() {
         },
         body: JSON.stringify({
           plan_id: planId,
-          success_url: `${window.location.origin}/pricing/?checkout=success`,
+          success_url: `${window.location.origin}/pricing/?checkout=success&plan=${encodeURIComponent(planId)}`,
           cancel_url: `${window.location.origin}/pricing/?checkout=cancel`,
         }),
       });

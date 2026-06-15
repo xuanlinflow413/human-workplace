@@ -1,10 +1,18 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrackableLink from "@/components/TrackableLink";
 import { categories, replies } from "@/data/replies";
 import PopularWorkplaceSituations from "@/components/PopularWorkplaceSituations";
 import EmailCapture from "@/components/EmailCapture";
 import { Heart, ArrowRight, MessageSquare, Clock, Quote, Feather, FileText } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://kindreply.co/",
+  },
+};
 
 const mostShared = [
   "how-to-resign-gracefully",
@@ -40,20 +48,26 @@ export default function HomePage() {
               conversations, and more. Professional, kind, and human.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
+              <TrackableLink
                 href="/cover-letter-writer/"
+                cta="try_cover_letter_writer"
+                location="home_hero"
+                eventProps={{ destination: "/cover-letter-writer/" }}
                 className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
               >
                 <FileText className="h-4 w-4" />
                 <span>Try Cover Letter Writer</span>
-              </Link>
-              <Link
+              </TrackableLink>
+              <TrackableLink
                 href="/workplace/"
+                cta="browse_all_replies"
+                location="home_hero"
+                eventProps={{ destination: "/workplace/" }}
                 className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors"
               >
                 <span>Browse all replies</span>
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </TrackableLink>
             </div>
           </div>
         </section>
@@ -216,6 +230,50 @@ export default function HomePage() {
                 </p>
               </div>
             </Link>
+            <Link
+              href="/salary-negotiation-generator/"
+              className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
+            >
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-100">
+                <FileText className="h-5 w-5 text-stone-500" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-foreground group-hover:text-stone-700 transition-colors">
+                    Salary Negotiation Generator
+                  </h3>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Ask for better compensation with a professional, calm draft.
+                </p>
+              </div>
+            </Link>
+            {[
+              ["/resignation-letter-generator/", "Resignation Letter Generator", "Write a graceful resignation letter with a clear final day."],
+              ["/two-weeks-notice-generator/", "Two Weeks Notice Generator", "Create a simple two weeks notice message for work."],
+              ["/professional-email-generator/", "Professional Email Generator", "Draft workplace emails for follow-ups, requests, and boundaries."],
+              ["/workplace-email-templates/", "Workplace Email Templates", "Browse templates for difficult moments at work."],
+            ].map(([href, title, description]) => (
+              <Link
+                key={href}
+                href={href}
+                className="group flex items-start gap-4 rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-100">
+                  <FileText className="h-5 w-5 text-stone-500" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-semibold text-foreground group-hover:text-stone-700 transition-colors">
+                      {title}
+                    </h3>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">{description}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
 

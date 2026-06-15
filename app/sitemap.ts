@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/workplace/categories/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-examples/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-writer/`, priority: 0.95, changeFrequency: "weekly" },
+    { url: `${baseUrl}/salary-negotiation-generator/`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-for-career-change/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-for-project-manager/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-for-software-engineer/`, priority: 0.8, changeFrequency: "weekly" },
@@ -30,6 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/cover-letter-mistakes/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/cover-letter-with-no-experience/`, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/job-search/`, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${baseUrl}/resignation-letter-generator/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/two-weeks-notice-generator/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/professional-email-generator/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/workplace-email-templates/`, priority: 0.86, changeFrequency: "weekly" },
   ];
 
   // Dynamic routes — automatically generated from data source

@@ -1,5 +1,7 @@
 export interface Env {
   OPENROUTER_API_KEY: string;
+  BILLING_WORKER_URL: string;
+  BILLING_API_KEY: string;
 }
 
 interface RequestBody {
@@ -7,6 +9,7 @@ interface RequestBody {
   name: string;
   fit: string;
   tone: string;
+  userId?: string;
 }
 
 interface CFContext {
@@ -42,6 +45,76 @@ Format:
 - End with "Best, [Name]" or "Sincerely, [Name]"
 - No bullet points, no headers, no markdown formatting`;
 
+// Credits cost per feature
+const CREDIT_COST = 1; // 1 credit per cover letter generation
+
+/**
+ * Check and consume credits before AI call
+ */
+async function consumeCredits(
+  userId: string,
+  env: Env
+): Promise<{ success: boolean; referenceId?: string; balance?: number; error?: string; code?: string }> {
+  try {
+    const res = await fetch(`${env.BILLING_WORKER_URL}/api/credits/consume`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.BILLING_API_KEY}`,
+        'X-User-ID': userId,
+      },
+      body: JSON.stringify({
+        amount: CREDIT_COST,
+        product: 'kindreply',
+        feature: 'cover-letter',
+        description: 'Generate cover letter',
+      }),
+    });
+
+    const data = await res.json() as { success?: boolean; balance?: number; reference_id?: string; error?: string };
+
+    if (!res.ok) {
+      if (res.status === 402) {
+        return { success: false, error: 'Insufficient credits', code: 'CREDITS_INSUFFICIENT' };
+      }
+      return { success: false, error: data.error || `Credits API error: ${res.status}`, code: `HTTP_${res.status}` };
+    }
+
+    return { success: true, referenceId: data.reference_id, balance: data.balance };
+  } catch (err) {
+    console.error('[CoverLetter] Credits consume failed:', err);
+    return { success: false, error: 'Credits service unavailable', code: 'CREDITS_SERVICE_ERROR' };
+  }
+}
+
+/**
+ * Refund credits on AI call failure
+ */
+async function refundCredits(
+  userId: string,
+  referenceId: string,
+  env: Env
+): Promise<void> {
+  try {
+    await fetch(`${env.BILLING_WORKER_URL}/api/credits/refund`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.BILLING_API_KEY}`,
+        'X-User-ID': userId,
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        reference_id: referenceId,
+        amount: CREDIT_COST,
+        reason: 'Cover letter generation failed',
+      }),
+    });
+  } catch (err) {
+    console.error('[CoverLetter] Credits refund failed:', err);
+  }
+}
+
 export const onRequestPost = async (context: CFContext) => {
   const { request, env } = context;
 
@@ -65,6 +138,17 @@ export const onRequestPost = async (context: CFContext) => {
     );
   }
 
+  // Check billing config
+  if (!env.BILLING_WORKER_URL || !env.BILLING_API_KEY) {
+    return new Response(
+      JSON.stringify({ error: "Billing not configured" }),
+      {
+        status: 503,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
   let body: RequestBody;
   try {
     body = await request.json();
@@ -75,7 +159,7 @@ export const onRequestPost = async (context: CFContext) => {
     });
   }
 
-  const { jobDescription, name, fit, tone } = body;
+  const { jobDescription, name, fit, tone, userId } = body;
 
   if (!jobDescription || typeof jobDescription !== "string") {
     return new Response(
@@ -87,6 +171,42 @@ export const onRequestPost = async (context: CFContext) => {
     );
   }
 
+  // Require userId for credits
+  if (!userId) {
+    return new Response(
+      JSON.stringify({ 
+        error: "Authentication required",
+        code: "AUTH_REQUIRED",
+        message: "Please sign in to generate cover letters."
+      }),
+      {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
+  // Step 1: Consume credits
+  const creditsResult = await consumeCredits(userId, env);
+  if (!creditsResult.success) {
+    return new Response(
+      JSON.stringify({
+        error: creditsResult.error,
+        code: creditsResult.code,
+        message: creditsResult.code === 'CREDITS_INSUFFICIENT' 
+          ? "You don't have enough credits. Please purchase more credits to continue."
+          : creditsResult.error,
+      }),
+      {
+        status: creditsResult.code === 'CREDITS_INSUFFICIENT' ? 402 : 503,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+
+  const referenceId = creditsResult.referenceId!;
+
+  // Step 2: Generate cover letter
   const userPrompt = `Write a cover letter for the following job. Use a ${tone || "warm"} tone.
 
 Job Description:
@@ -121,10 +241,13 @@ Write the cover letter now.`;
     );
 
     if (!response.ok) {
+      // Refund on API failure
+      await refundCredits(userId, referenceId, env);
       return new Response(
         JSON.stringify({
           error: "OpenRouter API error",
           status: response.status,
+          code: "AI_API_ERROR",
         }),
         {
           status: 502,
@@ -140,8 +263,10 @@ Write the cover letter now.`;
     const coverLetter = data.choices?.[0]?.message?.content?.trim();
 
     if (!coverLetter) {
+      // Refund on empty response
+      await refundCredits(userId, referenceId, env);
       return new Response(
-        JSON.stringify({ error: "Empty response from OpenRouter" }),
+        JSON.stringify({ error: "Empty response from OpenRouter", code: "AI_EMPTY_RESPONSE" }),
         {
           status: 502,
           headers: { "Content-Type": "application/json" },
@@ -149,16 +274,26 @@ Write the cover letter now.`;
       );
     }
 
-    return new Response(JSON.stringify({ coverLetter }), {
+    return new Response(JSON.stringify({ 
+      coverLetter,
+      credits_used: CREDIT_COST,
+      credits_balance: creditsResult.balance,
+    }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
       },
     });
-  } catch {
+  } catch (err) {
+    // Refund on exception
+    await refundCredits(userId, referenceId, env);
     return new Response(
-      JSON.stringify({ error: "Failed to call OpenRouter API" }),
+      JSON.stringify({ 
+        error: "Failed to call OpenRouter API",
+        code: "AI_CALL_FAILED",
+        details: err instanceof Error ? err.message : "Unknown error",
+      }),
       {
         status: 502,
         headers: { "Content-Type": "application/json" },

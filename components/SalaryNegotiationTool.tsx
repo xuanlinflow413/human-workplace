@@ -1,47 +1,31 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
-import { generateCoverLetter, toneOptions, demoLetters, type Tone } from "@/data/demoLetters";
-import CoverLetterOutput from "./CoverLetterOutput";
-import UpgradePrompt from "./UpgradePrompt";
-import { FileText, Sparkles, Wand2, Loader2, ChevronDown, Coins, LogIn, Shield, Clock, Zap, CheckCircle, AlertCircle } from "lucide-react";
+import { Copy, Check, RefreshCw, Trash2, Sparkles, Loader2, Coins, LogIn, DollarSign, TrendingUp, MessageSquare, Palette, Shield, Clock, Zap, CheckCircle, AlertCircle } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import { useAnalytics } from "@/lib/analytics";
 import BuyCreditsModal from "./BuyCreditsModal";
 
-// KindReply API Worker URL
 const API_BASE = "https://api.kindreply.co";
 
-const SAMPLE_JD = `Senior Product Manager — Mobile Growth
+const toneOptions = [
+  { value: "professional", label: "Professional", description: "Balanced and courteous" },
+  { value: "firm", label: "Firm", description: "Direct and assertive" },
+  { value: "polite", label: "Polite", description: "Soft and deferential" },
+  { value: "enthusiastic", label: "Enthusiastic", description: "Positive and excited" },
+];
 
-We are looking for a Senior Product Manager to lead our mobile app team. You will own the roadmap for user acquisition and retention, working closely with engineering, design, and marketing. The ideal candidate has shipped consumer-facing features that drove measurable growth, and can balance data with user intuition.
-
-What you will do:
-- Define and execute the mobile product strategy
-- Run experiments to improve activation and retention
-- Collaborate with cross-functional teams to ship fast
-
-Requirements:
-- 5+ years of product management experience
-- Track record of shipping features that moved metrics
-- Strong analytical skills and comfort with ambiguity`;
-
-const SAMPLE_DETAIL = "I grew our app's DAU by 40% in 6 months through a referral program I designed from scratch.";
-const SAMPLE_NAME = "Alex Chen";
-
-export default function CoverLetterTool() {
-  const [jd, setJd] = useState("");
-  const [userDetail, setUserDetail] = useState("");
-  const [userName, setUserName] = useState("");
-  const [tone, setTone] = useState<Tone>("warm");
+export default function SalaryNegotiationTool() {
+  const [currentOffer, setCurrentOffer] = useState<string>("");
+  const [desiredSalary, setDesiredSalary] = useState<string>("");
+  const [reason, setReason] = useState("");
+  const [tone, setTone] = useState("professional");
   const [output, setOutput] = useState("");
   const [hasGenerated, setHasGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [usedFallback, setUsedFallback] = useState(false);
-  const [showDemoDropdown, setShowDemoDropdown] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [showBuyModal, setShowBuyModal] = useState(false);
   const outputRef = useRef<HTMLDivElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // 使用统一的 auth hook
   const { user, getLoginUrl, isPro, subscription, creditsBalance, refreshCredits, syncCreditsAfterPayment, paymentSyncStatus, paymentSyncMessage } = useAuth();
@@ -57,34 +41,35 @@ export default function CoverLetterTool() {
       trackCheckoutSuccess(planId, planName);
       trackEntitlementActivated(planId, planName);
       const beforeBalance = creditsBalance ?? Number(localStorage.getItem("kindreply_credits") || "0");
-      console.log('[CoverLetterTool] checkout success detected, beforeBalance =', beforeBalance);
+      console.log('[SalaryNegotiationTool] checkout success detected, beforeBalance =', beforeBalance);
       syncCreditsAfterPayment(beforeBalance);
       // 延迟清理 URL 参数，避免中断轮询逻辑
       const cleanupTimer = setTimeout(() => {
         const url = new URL(window.location.href);
         url.searchParams.delete("checkout");
         window.history.replaceState({}, "", url.toString());
-        console.log('[CoverLetterTool] URL cleaned up');
+        console.log('[SalaryNegotiationTool] URL cleaned up');
       }, 25000); // 25秒后清理，确保长轮询完成
       return () => clearTimeout(cleanupTimer);
     }
   }, [syncCreditsAfterPayment, creditsBalance]);
 
   const handleGenerate = useCallback(async () => {
-    if (!jd.trim()) return;
+    const current = Number(currentOffer);
+    const desired = Number(desiredSalary);
+    if (!current || !desired || current <= 0 || desired <= 0) return;
     setIsLoading(true);
-    setUsedFallback(false);
 
-    trackGenerateClicked("cover_letter", jd.trim().length > 0);
+    trackGenerateClicked("salary_negotiation", currentOffer.trim().length > 0);
 
     try {
-      const res = await fetch(`${API_BASE}/cover-letter`, {
+      const res = await fetch(`${API_BASE}/salary-negotiation`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          jobDescription: jd,
-          name: userName,
-          fit: userDetail,
+          currentOffer: current,
+          desiredSalary: desired,
+          reason,
           tone,
           userId: user?.id,
         }),
@@ -92,18 +77,18 @@ export default function CoverLetterTool() {
 
       if (res.ok) {
         const data = await res.json() as { 
-          coverLetter?: string; 
+          email?: string; 
           credits_balance?: number; 
           credits_remaining?: number; 
           balance?: number;
         };
-        if (data.coverLetter) {
-          setOutput(data.coverLetter);
+        if (data.email) {
+          setOutput(data.email);
           setHasGenerated(true);
           await refreshCredits();
           console.log("[credits:refresh-after-generate] done");
         } else {
-          throw new Error("No cover letter in response");
+          throw new Error("No email in response");
         }
       } else if (res.status === 401 || res.status === 402) {
         const data = await res.json() as { message?: string; code?: string };
@@ -113,10 +98,7 @@ export default function CoverLetterTool() {
         throw new Error(`API error: ${res.status}`);
       }
     } catch {
-      // Fallback to local template generation
-      const letter = generateCoverLetter(jd, userDetail, tone, userName);
-      setOutput(letter);
-      setUsedFallback(true);
+      setOutput("⚠️ Something went wrong. Please try again in a moment.");
       setHasGenerated(true);
     } finally {
       setIsLoading(false);
@@ -124,41 +106,43 @@ export default function CoverLetterTool() {
         outputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
     }
-  }, [jd, userDetail, tone, userName, refreshCredits]);
+  }, [currentOffer, desiredSalary, reason, tone, user, refreshCredits]);
 
   const handleRegenerate = useCallback(async () => {
     if (!user) return;
+    const current = Number(currentOffer);
+    const desired = Number(desiredSalary);
+    if (!current || !desired) return;
     setIsLoading(true);
-    setUsedFallback(false);
 
-    trackRegenerateClicked("cover_letter");
+    trackRegenerateClicked("salary_negotiation");
 
     try {
-      const res = await fetch(`${API_BASE}/cover-letter`, {
+      const res = await fetch(`${API_BASE}/salary-negotiation`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          jobDescription: jd,
-          name: userName,
-          fit: userDetail,
+          currentOffer: current,
+          desiredSalary: desired,
+          reason,
           tone,
-          userId: user?.id,
+          userId: user.id,
         }),
       });
 
       if (res.ok) {
         const data = await res.json() as { 
-          coverLetter?: string; 
+          email?: string; 
           credits_balance?: number; 
           credits_remaining?: number; 
           balance?: number;
         };
-        if (data.coverLetter) {
-          setOutput(data.coverLetter);
+        if (data.email) {
+          setOutput(data.email);
           await refreshCredits();
           console.log("[credits:refresh-after-generate] done");
         } else {
-          throw new Error("No cover letter in response");
+          throw new Error("No email in response");
         }
       } else if (res.status === 401 || res.status === 402) {
         const data = await res.json() as { message?: string };
@@ -167,52 +151,31 @@ export default function CoverLetterTool() {
         throw new Error(`API error: ${res.status}`);
       }
     } catch {
-      const letter = generateCoverLetter(jd, userDetail, tone, userName);
-      setOutput(letter);
-      setUsedFallback(true);
+      setOutput("⚠️ Something went wrong. Please try again in a moment.");
     } finally {
       setIsLoading(false);
     }
-  }, [jd, userDetail, tone, userName, user, refreshCredits]);
+  }, [currentOffer, desiredSalary, reason, tone, user, refreshCredits]);
 
-  const handleTrySample = useCallback(() => {
-    setJd(SAMPLE_JD);
-    setUserDetail(SAMPLE_DETAIL);
-    setUserName(SAMPLE_NAME);
-    setTone("confident");
-  }, []);
-
-  const handleLoadDemo = useCallback((demoId: string) => {
-    const demo = demoLetters.find((d) => d.id === demoId);
-    if (!demo) return;
-    setJd(demo.sampleJobDescription);
-    setUserDetail(demo.sampleFitDetail);
-    setUserName("");
-    setTone(demo.tone);
-    setShowDemoDropdown(false);
-    // Auto-generate the pre-written demo letter
-    setOutput(demo.generatedCoverLetter);
-    setHasGenerated(true);
-    setUsedFallback(false);
-    setTimeout(() => {
-      outputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 100);
-  }, []);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShowDemoDropdown(false);
-      }
+  const handleCopy = async () => {
+    if (!output) return;
+    try {
+      await navigator.clipboard.writeText(output);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = output;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     }
-    if (showDemoDropdown) {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [showDemoDropdown]);
+  };
 
-  const canGenerate = jd.trim().length > 0 && !isLoading;
+  const canGenerate = currentOffer && desiredSalary && Number(currentOffer) > 0 && Number(desiredSalary) > 0 && !isLoading;
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -220,7 +183,7 @@ export default function CoverLetterTool() {
       <div className="mb-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           {user ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="text-sm text-muted-foreground">
                 Signed in as <span className="font-medium text-foreground">{user.email}</span>
               </span>
@@ -238,7 +201,7 @@ export default function CoverLetterTool() {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               <span className="text-sm text-muted-foreground">Sign in to generate with AI</span>
               <button
                 onClick={() => {
@@ -268,108 +231,76 @@ export default function CoverLetterTool() {
         )}
       </div>
 
-      {/* Try sample buttons */}
-      <div className="mb-5 flex flex-wrap items-center gap-2">
-        <button
-          onClick={handleTrySample}
-          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium border border-dashed border-stone-300 text-muted-foreground hover:border-stone-400 hover:text-foreground transition-all"
-        >
-          <Wand2 className="h-3 w-3" />
-          <span>Try with a sample</span>
-        </button>
-
-        {/* Demo dropdown */}
-        <div className="relative" ref={dropdownRef}>
-          <button
-            onClick={() => setShowDemoDropdown((v) => !v)}
-            className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-medium border border-border bg-card text-muted-foreground hover:border-stone-300 hover:text-foreground transition-all"
-          >
-            <FileText className="h-3 w-3" />
-            <span>Load demo</span>
-            <ChevronDown className={`h-3 w-3 transition-transform ${showDemoDropdown ? "rotate-180" : ""}`} />
-          </button>
-
-          {showDemoDropdown && (
-            <div className="absolute left-0 top-full mt-1.5 z-50 w-64 rounded-xl border border-border bg-card shadow-lg py-1 max-h-72 overflow-y-auto">
-              {demoLetters.map((demo) => (
-                <button
-                  key={demo.id}
-                  onClick={() => handleLoadDemo(demo.id)}
-                  className="w-full text-left px-3 py-2 text-sm hover:bg-muted transition-colors flex items-center gap-2"
-                >
-                  <span className="font-medium text-foreground">{demo.jobTitle}</span>
-                  <span className="text-muted-foreground text-xs">@ {demo.companyName}</span>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-        {/* Premium template entry */}
-        <UpgradePrompt source="templates" compact isPro={isPro} userEmail={user?.email} creditsBalance={creditsBalance} subscription={subscription} />
-      </div>
-
-      <UpgradePrompt source="inline" isPro={isPro} userEmail={user?.email} creditsBalance={creditsBalance} subscription={subscription} />
-
       {/* Inputs */}
-      <div className="mt-6 space-y-5">
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
-            Job description
-          </label>
-          <textarea
-            value={jd}
-            onChange={(e) => setJd(e.target.value)}
-            placeholder="Paste the full job description — title, responsibilities, requirements. The more detail, the better the draft."
-            className="w-full min-h-[160px] rounded-xl border border-border bg-card p-4 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stone-300 resize-y"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
-            One real detail about you
-          </label>
-          <input
-            type="text"
-            value={userDetail}
-            onChange={(e) => setUserDetail(e.target.value)}
-            placeholder="A result you achieved, a project you led, or a skill you built. Example: I cut churn by 15% by redesigning the cancellation flow."
-            className="w-full rounded-xl border border-border bg-card p-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stone-300"
-          />
-        </div>
-
+      <div className="space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">
-              Your name
+              Current Offer
             </label>
-            <input
-              type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="How you sign off — e.g., Alex Chen"
-              className="w-full rounded-xl border border-border bg-card p-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stone-300"
-            />
+            <div className="relative">
+              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="number"
+                value={currentOffer}
+                onChange={(e) => setCurrentOffer(e.target.value)}
+                placeholder="90000"
+                className="w-full rounded-xl border border-border bg-card pl-9 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stone-300"
+              />
+            </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">
-              Tone
+              Desired Salary
             </label>
-            <div className="flex flex-wrap gap-2">
-              {toneOptions.map((t) => (
-                <button
-                  key={t.value}
-                  onClick={() => setTone(t.value)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all border ${
-                    tone === t.value
-                      ? "bg-foreground text-primary-foreground border-foreground"
-                      : "bg-card text-muted-foreground border-border hover:border-stone-300"
-                  }`}
-                  title={t.description}
-                >
-                  {t.label}
-                </button>
-              ))}
+            <div className="relative">
+              <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="number"
+                value={desiredSalary}
+                onChange={(e) => setDesiredSalary(e.target.value)}
+                placeholder="105000"
+                className="w-full rounded-xl border border-border bg-card pl-9 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stone-300"
+              />
             </div>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-2">
+            Reason / Context
+          </label>
+          <div className="relative">
+            <MessageSquare className="absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="Why you believe you deserve more — e.g., market research, additional skills, competing offers, years of experience..."
+              className="w-full min-h-[120px] rounded-xl border border-border bg-card pl-9 pr-4 py-3 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stone-300 resize-y"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-2">
+            Tone
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {toneOptions.map((t) => (
+              <button
+                key={t.value}
+                onClick={() => setTone(t.value)}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all border ${
+                  tone === t.value
+                    ? "bg-foreground text-primary-foreground border-foreground"
+                    : "bg-card text-muted-foreground border-border hover:border-stone-300"
+                }`}
+                title={t.description}
+              >
+                <Palette className="h-3 w-3" />
+                {t.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -409,7 +340,6 @@ export default function CoverLetterTool() {
             )}
           </button>
         )}
-        <UpgradePrompt source="unlimited" compact isPro={isPro} userEmail={user?.email} creditsBalance={creditsBalance} subscription={subscription} />
         
         {/* Button helper text */}
         <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
@@ -471,26 +401,69 @@ export default function CoverLetterTool() {
         </p>
       </div>
 
-      {/* Fallback warning */}
-      {usedFallback && (
-        <p className="mt-2 text-xs text-amber-600">
-          AI generation is temporarily unavailable. Showing a local template draft instead. You can try again in a moment.
-        </p>
-      )}
-
       {/* Output */}
       {hasGenerated && (
-        <div ref={outputRef} className="mt-10 scroll-mt-20">
-          <CoverLetterOutput
-            text={output}
-            onRegenerate={handleRegenerate}
-            onClear={() => {
-              setOutput("");
-              setHasGenerated(false);
-              setUsedFallback(false);
-            }}
-            isLoading={isLoading}
+        <div ref={outputRef} className="mt-10 scroll-mt-20 space-y-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-foreground">Your negotiation email</h2>
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={handleCopy}
+                className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+                  copied
+                    ? "bg-emerald-100 text-emerald-700"
+                    : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800"
+                }`}
+                aria-label={copied ? "Copied to clipboard" : "Copy email"}
+              >
+                {copied ? (
+                  <>
+                    <Check className="h-3.5 w-3.5" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="h-3.5 w-3.5" />
+                    <span>Copy</span>
+                  </>
+                )}
+              </button>
+              <button
+                onClick={handleRegenerate}
+                disabled={isLoading}
+                className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
+                  isLoading
+                    ? "bg-stone-100 text-stone-400 cursor-not-allowed"
+                    : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800"
+                }`}
+                aria-label="Regenerate email"
+              >
+                <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`} />
+                <span>{isLoading ? "Generating..." : "Regenerate"}</span>
+              </button>
+              <button
+                onClick={() => {
+                  setOutput("");
+                  setHasGenerated(false);
+                }}
+                className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800 transition-all"
+                aria-label="Clear email"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+                <span>Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            key={output}
+            defaultValue={output}
+            className="w-full min-h-[280px] rounded-xl border border-border bg-card p-4 sm:p-5 text-sm leading-relaxed text-foreground focus:outline-none focus:ring-2 focus:ring-stone-300 resize-y"
           />
+
+          <p className="text-xs text-muted-foreground">
+            This is a first draft. Always review it and make it yours before sending.
+          </p>
         </div>
       )}
       {showBuyModal && user && (

@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import { Copy, Check, RefreshCw, Trash2 } from "lucide-react";
 import UpgradePrompt from "./UpgradePrompt";
 
+import { useAuth } from "@/lib/AuthContext";
+
 interface CoverLetterOutputProps {
   text: string;
   onRegenerate: () => void;
@@ -19,6 +21,7 @@ export default function CoverLetterOutput({
 }: CoverLetterOutputProps) {
   const [copied, setCopied] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const { isPro } = useAuth();
 
   const handleCopy = async () => {
     const currentText = textareaRef.current?.value || text;
@@ -44,8 +47,8 @@ export default function CoverLetterOutput({
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-foreground">Your draft</h2>
         <div className="flex flex-wrap items-center gap-2">
-          <UpgradePrompt source="pdf" compact />
-          <UpgradePrompt source="optimize" compact />
+          <UpgradePrompt source="pdf" compact isPro={isPro} />
+          <UpgradePrompt source="optimize" compact isPro={isPro} />
           <button
             onClick={handleCopy}
             className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${

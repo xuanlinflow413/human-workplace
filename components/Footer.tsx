@@ -30,8 +30,23 @@ export default function Footer() {
             <Link href="/job-search/" className="hover:text-foreground transition-colors">
               Job Search
             </Link>
+            <Link href="/resignation-letter-generator/" className="hover:text-foreground transition-colors">
+              Resignation Letter
+            </Link>
+            <Link href="/two-weeks-notice-generator/" className="hover:text-foreground transition-colors">
+              Two Weeks Notice
+            </Link>
+            <Link href="/professional-email-generator/" className="hover:text-foreground transition-colors">
+              Professional Emails
+            </Link>
+            <Link href="/workplace-email-templates/" className="hover:text-foreground transition-colors">
+              Workplace Templates
+            </Link>
             <Link href="/cover-letter-writer/" className="hover:text-foreground transition-colors">
               Cover Letter
+            </Link>
+            <Link href="/salary-negotiation-generator/" className="hover:text-foreground transition-colors">
+              Salary Negotiation
             </Link>
             <Link href="/about/" className="hover:text-foreground transition-colors">
               About

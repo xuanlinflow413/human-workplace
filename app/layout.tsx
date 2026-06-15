@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/lib/AuthContext";
+import PlausibleProvider from "@/components/PlausibleProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kindreply.co"),
-  title: "Human Workplace — Real Professional Replies for Hard Moments",
+  title: "KindReply — Real Professional Replies for Hard Moments",
   description:
     "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more. Professional, kind, and human.",
   keywords: [
@@ -15,9 +17,9 @@ export const metadata: Metadata = {
     "layoff communication",
     "manager replies",
   ],
-  authors: [{ name: "Human Workplace" }],
-  creator: "Human Workplace",
-  publisher: "Human Workplace",
+  authors: [{ name: "KindReply" }],
+  creator: "KindReply",
+  publisher: "KindReply",
   robots: {
     index: true,
     follow: true,
@@ -30,8 +32,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://kindreply.co/",
-    siteName: "Human Workplace",
-    title: "Human Workplace — Real Professional Replies for Hard Moments",
+    siteName: "KindReply",
+    title: "KindReply — Real Professional Replies for Hard Moments",
     description:
       "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more. Professional, kind, and human.",
     images: [
@@ -45,14 +47,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Human Workplace — Real Professional Replies for Hard Moments",
+    title: "KindReply — Real Professional Replies for Hard Moments",
     description:
       "Copy-ready workplace replies for resignation, burnout, difficult conversations, and more.",
-    creator: "@humanworkplace",
+    creator: "@kindreply",
     images: ["/og-image.png"],
   },
   alternates: {
-    canonical: "/",
+    canonical: null,
   },
   verification: {
     google: "r79PY62ZMOSfpJOaPPb7ismHQA9KS2WupX3dwbYK8_o",
@@ -83,13 +85,13 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                name: "Human Workplace",
+                name: "KindReply",
                 url: "https://kindreply.co/",
                 description:
                   "A curated collection of real, professional, and emotionally intelligent workplace replies.",
                 publisher: {
                   "@type": "Organization",
-                  name: "Human Workplace",
+                  name: "KindReply",
                   url: "https://kindreply.co/",
                 },
               },
@@ -131,7 +133,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <PlausibleProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </PlausibleProvider>
+      </body>
     </html>
   );
 }
