@@ -25,6 +25,24 @@ export const metadata: Metadata = {
 
 const resources = [
   {
+    href: "/resume-summary-examples/",
+    title: "Resume Summary Examples",
+    description: "Write a clear professional profile for career changers, entry-level candidates, and experienced job seekers.",
+    tag: "Resume",
+  },
+  {
+    href: "/interview-thank-you-email/",
+    title: "Interview Thank You Email",
+    description: "Send a short, specific thank-you note after a recruiter screen, hiring manager interview, or final round.",
+    tag: "Interview",
+  },
+  {
+    href: "/job-offer-response-email/",
+    title: "Job Offer Response Email",
+    description: "Accept an offer, ask for time, negotiate details, or decline professionally without sounding cold.",
+    tag: "Offer",
+  },
+  {
     href: "/cover-letter-writer/",
     title: "AI Cover Letter Writer",
     description: "Paste a job description, add one real detail, get a human-sounding first draft in 60 seconds.",
