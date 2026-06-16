@@ -19,9 +19,9 @@ type StoredUser = {
 };
 
 const jobPackFeatures = [
-  "10 AI rewrite credits for resumes, cover letters, and salary messages",
+  "10 AI rewrite credits for resumes, cover letters, support replies, and salary messages",
   "One-time purchase — no subscription commitment",
-  "Best for validating one job-search workflow before paying monthly",
+  "Best for validating one job-search or customer-support workflow before paying monthly",
   "Credits stay attached to your KindReply account after checkout",
 ];
 
@@ -121,13 +121,13 @@ export default function PricingClient() {
         <div className="mx-auto max-w-5xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-800">
             <Sparkles className="h-4 w-4" />
-            One job-search pack first, Pro when usage is proven
+            One reply pack first, Pro when usage is proven
           </div>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Simple pricing for job-search messages that need to sound human
+            Simple pricing for job-search and support replies that need to sound human
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-            Start with a low-risk Job Pack for one application push. Upgrade to Pro only when you need recurring rewrites, cover letters, and negotiation support.
+            Start with a low-risk Job Pack for one application push or customer-support reply workflow. Upgrade to Pro only when you need recurring rewrites, templates, and polished replies.
           </p>
           {error ? (
             <p className="mx-auto mt-5 max-w-2xl rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -150,7 +150,7 @@ export default function PricingClient() {
               <span className="pb-1 text-sm text-muted-foreground">one-time</span>
             </div>
             <p className="mt-4 text-sm leading-6 text-muted-foreground">
-              10 credits for cover letters, follow-ups, salary messages, and workplace replies when you only need a focused push.
+              10 credits for cover letters, follow-ups, salary messages, customer replies, and workplace messages when you only need a focused push.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
               {jobPackFeatures.map((feature) => (
@@ -186,7 +186,7 @@ export default function PricingClient() {
               <span className="pb-1 text-sm text-muted-foreground">/ month</span>
             </div>
             <p className="mt-4 text-sm leading-6 text-muted-foreground">
-              300 monthly credits for active job seekers who need polished messages across applications, follow-ups, and negotiations.
+              300 monthly credits for active users who need polished messages across applications, support tickets, follow-ups, and negotiations.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
               {proFeatures.map((feature) => (
@@ -216,11 +216,11 @@ export default function PricingClient() {
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl border border-border bg-card p-5">
               <h3 className="font-semibold text-foreground">Trying KindReply?</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">Buy the $4.99 Job Pack and use it on one role, one company, or one negotiation thread.</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">Buy the $4.99 Job Pack and use it on one role, one company, one support queue, or one negotiation thread.</p>
             </div>
             <div className="rounded-2xl border border-border bg-card p-5">
               <h3 className="font-semibold text-foreground">Applying weekly?</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">Use Pro when rewrites, cover letters, and follow-ups are part of your recurring workflow.</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">Use Pro when rewrites, cover letters, support replies, and follow-ups are part of your recurring workflow.</p>
             </div>
             <div className="rounded-2xl border border-border bg-card p-5">
               <h3 className="font-semibold text-foreground">Need credits only?</h3>

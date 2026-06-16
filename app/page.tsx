@@ -258,6 +258,12 @@ export default function HomePage() {
               ["/burnout-email-template/", "Burnout Email Template", "Ask for support or time off without oversharing."],
               ["/salary-negotiation-email-template/", "Salary Negotiation Email Template", "Ask for better compensation with evidence and a professional tone."],
               ["/follow-up-email-after-interview/", "Follow-Up Email After Interview", "Send a thank-you or status check that sounds human, not generic."],
+              ["/tools/email-reply-generator/", "Email Reply Generator", "Turn difficult emails into kind, professional replies."],
+              ["/tools/customer-service-reply-generator/", "Customer Service Reply Generator", "Draft support replies for complaints, refunds, and escalations."],
+              ["/reply-to-rude-email/", "Reply to a Rude Email", "Answer sharp messages without escalating the tone."],
+              ["/reply-to-negative-review/", "Negative Review Response", "Reply publicly with empathy and a clear next step."],
+              ["/refund-response-generator/", "Refund Response Generator", "Approve, deny, or explain refunds professionally."],
+              ["/for-customer-support/", "For Customer Support Teams", "Keep difficult ticket replies calm, consistent, and brand-safe."],
             ].map(([href, title, description]) => (
               <Link
                 key={href}

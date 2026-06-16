@@ -89,8 +89,29 @@ Best,
             <h2 className="text-lg font-semibold text-foreground">Need a more specific version?</h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">Use KindReply tools and workplace reply examples as a starting point, then edit names, dates, constraints, and tone before sending.</p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Link href="/cover-letter-writer/" className="inline-flex items-center justify-center rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors">Try Cover Letter Writer</Link>
-              <Link href="/salary-negotiation-generator/" className="inline-flex items-center justify-center rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors">Try Salary Negotiation Tool</Link>
+              <Link href="/tools/email-reply-generator/" className="inline-flex items-center justify-center rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors">Try Email Reply Generator</Link>
+              <Link href="/templates/apology-email/" className="inline-flex items-center justify-center rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors">Open Apology Templates</Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-12 border-t border-border bg-muted/20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-lg font-semibold text-foreground mb-6">Customer and reply templates</h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {[
+                ["/tools/customer-service-reply-generator/", "Customer Service Reply Generator", "Draft support replies for complaints, refunds, and escalations."],
+                ["/reply-to-rude-email/", "Reply to a Rude Email", "Stay professional when the incoming message is sharp."],
+                ["/reply-to-negative-review/", "Negative Review Response", "Write public responses that protect trust."],
+                ["/refund-response-generator/", "Refund Response Generator", "Handle approval, denial, and policy replies."],
+                ["/templates/follow-up-reply/", "Follow-Up Reply Templates", "Send polite nudges with one clear ask."],
+                ["/templates/decline-politely/", "Decline Politely", "Say no without damaging the relationship."],
+              ].map(([href, title, description]) => (
+                <Link key={href} href={href} className="group rounded-xl border border-border bg-card p-5 hover:border-stone-300 hover:shadow-sm transition-all">
+                  <h3 className="font-semibold text-foreground group-hover:text-stone-700 transition-colors">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

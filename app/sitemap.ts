@@ -42,6 +42,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/burnout-email-template/`, priority: 0.84, changeFrequency: "weekly" },
     { url: `${baseUrl}/salary-negotiation-email-template/`, priority: 0.84, changeFrequency: "weekly" },
     { url: `${baseUrl}/follow-up-email-after-interview/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/tools/email-reply-generator/`, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${baseUrl}/tools/customer-service-reply-generator/`, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${baseUrl}/reply-to-rude-email/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/reply-to-negative-review/`, priority: 0.88, changeFrequency: "weekly" },
+    { url: `${baseUrl}/refund-response-generator/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/templates/apology-email/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/templates/follow-up-reply/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/templates/decline-politely/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/for-customer-support/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/for-freelancers/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/for-small-business/`, priority: 0.84, changeFrequency: "weekly" },
   ];
 
   // Dynamic routes — automatically generated from data source
