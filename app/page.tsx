@@ -22,6 +22,39 @@ const mostShared = [
   "giving-negative-feedback-that-lands-well",
 ];
 
+const featuredReplyTools = [
+  [
+    "/tools/email-reply-generator/",
+    "Email Reply Generator",
+    "Turn difficult emails into kind, professional replies.",
+  ],
+  [
+    "/tools/customer-service-reply-generator/",
+    "Customer Service Reply Generator",
+    "Draft replies for complaints, refunds, and escalations.",
+  ],
+  [
+    "/reply-to-rude-email/",
+    "Reply to a Rude Email",
+    "Answer sharp messages without escalating the tone.",
+  ],
+  [
+    "/reply-to-negative-review/",
+    "Negative Review Response",
+    "Respond publicly with empathy and a clear next step.",
+  ],
+  [
+    "/refund-response-generator/",
+    "Refund Response Generator",
+    "Approve, deny, or explain refunds professionally.",
+  ],
+  [
+    "/for-customer-support/",
+    "For Customer Support Teams",
+    "Keep ticket replies calm, consistent, and brand-safe.",
+  ],
+];
+
 export default function HomePage() {
   const mostSharedReplies = mostShared
     .map((slug) => replies.find((r) => r.slug === slug))
@@ -68,6 +101,69 @@ export default function HomePage() {
                 <span>Browse all replies</span>
                 <ArrowRight className="h-4 w-4" />
               </TrackableLink>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-12 border-t border-border bg-stone-50/60">
+          <div className="mx-auto max-w-5xl">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1 text-xs font-medium text-stone-600 mb-3">
+                  New reply tools
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+                  Reply tools for difficult messages
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm md:text-base text-muted-foreground">
+                  Get quick help with rude emails, customer complaints, negative reviews,
+                  refund replies, and other high-stakes messages.
+                </p>
+              </div>
+              <TrackableLink
+                href="/pricing/"
+                cta="view_reply_pack"
+                location="home_reply_tools"
+                eventProps={{ destination: "/pricing/" }}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
+              >
+                <span>View Reply Pack</span>
+                <ArrowRight className="h-4 w-4" />
+              </TrackableLink>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {featuredReplyTools.map(([href, title, description]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="group rounded-xl border border-stone-200 bg-white p-5 hover:border-stone-300 hover:shadow-sm transition-all"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-100">
+                      <MessageSquare className="h-5 w-5 text-stone-500" />
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </div>
+                  <h3 className="mt-4 font-semibold text-foreground group-hover:text-stone-700 transition-colors">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-col gap-3 rounded-xl border border-stone-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-muted-foreground">
+                Need more than templates? The Reply Pack gives credits for higher-stakes custom drafts.
+              </p>
+              <Link
+                href="/tools/customer-service-reply-generator/"
+                className="inline-flex items-center gap-2 text-sm font-medium text-stone-700 hover:text-foreground transition-colors"
+              >
+                <span>Start with customer support replies</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>
