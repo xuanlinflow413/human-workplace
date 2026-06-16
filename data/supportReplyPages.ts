@@ -11,7 +11,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'AI email reply generator',
       h1: 'AI email reply generator for professional responses',
       description: 'Turn a rough message, customer note, or difficult email into a kind, clear reply that sounds professional instead of robotic.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Try the support reply pack' },
+      primaryCta: { href: "#support-reply-tool", label: 'Try the support reply generator' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/workplace-email-templates/', label: 'Browse workplace templates' },
       cards: [
         { title: 'Professional tone', text: 'Rewrite blunt drafts into replies that are clear, warm, and easy to send.' },
@@ -42,7 +47,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Customer service replies',
       h1: 'Customer service reply generator',
       description: 'Draft calm, helpful customer support replies that acknowledge emotion, explain the policy, and protect trust.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Open pricing for support replies' },
+      primaryCta: { href: "#support-reply-tool", label: 'Generate a support reply' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/reply-to-negative-review/', label: 'See negative review replies' },
       cards: [
         { title: 'Acknowledge first', text: 'Show the customer you understood the problem before jumping into policy.' },
@@ -73,7 +83,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Difficult email response',
       h1: 'How to reply to a rude email professionally',
       description: 'Respond to a rude email with a steady tone, a clear boundary, and a practical next step — without matching the other person’s energy.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Get more difficult reply templates' },
+      primaryCta: { href: "#support-reply-tool", label: 'Get more difficult reply templates' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/professional-email-generator/', label: 'Open professional email generator' },
       cards: [
         { title: 'Pause the reaction', text: 'Do not answer the emotional tone with more emotion.' },
@@ -104,7 +119,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Review response',
       h1: 'Negative review response generator',
       description: 'Reply to negative reviews in a way that reassures future customers, invites resolution, and avoids public arguments.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Unlock support reply templates' },
+      primaryCta: { href: "#support-reply-tool", label: 'Unlock support reply templates' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/refund-response-generator/', label: 'Open refund response templates' },
       cards: [
         { title: 'Future buyers are reading', text: 'The public response is not only for the unhappy customer.' },
@@ -135,7 +155,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Refund replies',
       h1: 'Refund response generator',
       description: 'Handle refund requests with clarity and empathy, whether you are approving, denying, or offering a partial resolution.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Get support reply pack' },
+      primaryCta: { href: "#support-reply-tool", label: 'Generate a refund reply' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/tools/customer-service-reply-generator/', label: 'See customer service generator' },
       cards: [
         { title: 'Clarify the outcome', text: 'State whether the refund is approved, denied, partial, or still under review.' },
@@ -166,7 +191,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Apology templates',
       h1: 'Apology email templates',
       description: 'Write apologies that take responsibility, repair trust, and move the situation forward without sounding dramatic or generic.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Get premium apology templates' },
+      primaryCta: { href: "#support-reply-tool", label: 'Get premium apology templates' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/workplace-email-templates/', label: 'Open workplace templates' },
       cards: [
         { title: 'Own the impact', text: 'Say what happened and why it mattered.' },
@@ -197,7 +227,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Follow-up replies',
       h1: 'Follow-up reply templates',
       description: 'Send follow-ups that are polite, specific, and easy to answer, whether you are nudging a customer, colleague, client, or hiring team.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Unlock follow-up templates' },
+      primaryCta: { href: "#support-reply-tool", label: 'Unlock follow-up templates' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/follow-up-email-after-interview/', label: 'Open interview follow-up email' },
       cards: [
         { title: 'Give context', text: 'Remind them what this is about in one line.' },
@@ -228,7 +263,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'Polite decline templates',
       h1: 'Decline politely email templates',
       description: 'Say no with warmth, clarity, and respect so the recipient understands the answer and the relationship stays intact.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Get polite decline templates' },
+      primaryCta: { href: "#support-reply-tool", label: 'Get polite decline templates' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/job-offer-response-email/', label: 'Open job offer response email' },
       cards: [
         { title: 'Lead with thanks', text: 'Acknowledge the ask before saying no.' },
@@ -259,7 +299,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'For customer support',
       h1: 'KindReply for customer support teams',
       description: 'Give support teams calmer first drafts for high-emotion tickets: complaints, refund requests, negative reviews, escalations, and policy explanations.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'View support reply pricing' },
+      primaryCta: { href: "#support-reply-tool", label: 'Generate a support reply' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/tools/customer-service-reply-generator/', label: 'Open customer service generator' },
       cards: [
         { title: 'Faster first drafts', text: 'Turn messy ticket context into a professional response structure.' },
@@ -290,7 +335,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'For freelancers',
       h1: 'KindReply for freelancers',
       description: 'Write client emails that protect the relationship and the scope: late payments, revisions, unclear feedback, delays, boundaries, and polite no messages.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'Get freelancer reply templates' },
+      primaryCta: { href: "#support-reply-tool", label: 'Get freelancer reply templates' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/professional-email-generator/', label: 'Open professional email generator' },
       cards: [
         { title: 'Protect scope', text: 'Say what is included, what changed, and what costs extra.' },
@@ -321,7 +371,12 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       eyebrow: 'For small business',
       h1: 'KindReply for small business replies',
       description: 'Small teams need fast, careful replies when customers are upset. KindReply helps turn stressful messages into clear customer communication.',
-      primaryCta: { href: "/pricing/?pack=support-replies", label: 'View small business reply pricing' },
+      primaryCta: { href: "#support-reply-tool", label: 'Generate a customer reply' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the message you need to answer, choose the goal and tone, and generate a sendable first draft using 1 KindReply credit.',
+      },
       secondaryCta: { href: '/reply-to-negative-review/', label: 'Open negative review response' },
       cards: [
         { title: 'Handle complaints', text: 'Reply quickly without sounding rushed or dismissive.' },

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, FileText } from "lucide-react";
+import SupportReplyTool from "@/components/SupportReplyTool";
 
 export type WorkplaceSeoPageConfig = {
   eyebrow: string;
@@ -13,6 +14,11 @@ export type WorkplaceSeoPageConfig = {
   templates: Array<{ title: string; body: string }>;
   tips: string[];
   related: Array<{ href: string; label: string; text: string }>;
+  tool?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+  };
 };
 
 export default function WorkplaceSeoPage({ config }: { config: WorkplaceSeoPageConfig }) {
@@ -39,6 +45,27 @@ export default function WorkplaceSeoPage({ config }: { config: WorkplaceSeoPageC
             </div>
           </div>
         </section>
+
+        {config.tool && (
+          <section id="support-reply-tool" className="px-4 pb-12">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card p-5 md:p-6 shadow-sm">
+              <div className="mb-4 text-center">
+                <div className="inline-flex items-center rounded-full border border-border bg-muted/40 px-3 py-1 text-xs font-medium text-muted-foreground">
+                  {config.tool.eyebrow}
+                </div>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">{config.tool.title}</h2>
+                <p className="mt-2 text-sm md:text-base leading-6 text-muted-foreground">{config.tool.description}</p>
+              </div>
+              <SupportReplyTool
+                context={{
+                  pageTitle: config.h1,
+                  pageDescription: config.description,
+                  pageEyebrow: config.eyebrow,
+                }}
+              />
+            </div>
+          </section>
+        )}
 
         <section className="px-4 py-12 border-t border-border">
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3">
