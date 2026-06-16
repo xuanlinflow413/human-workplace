@@ -9,7 +9,7 @@ const API_BASE = "https://api.kindreply.co";
 type CheckoutPlan = "plan_kindreply_jobpack" | "plan_kindreply_pro";
 
 const planDetails: Record<CheckoutPlan, { name: string; price: string }> = {
-  plan_kindreply_jobpack: { name: "Job Pack", price: "$4.99" },
+  plan_kindreply_jobpack: { name: "Reply Pack", price: "$4.99" },
   plan_kindreply_pro: { name: "KindReply Pro", price: "$9.99" },
 };
 
@@ -19,17 +19,23 @@ type StoredUser = {
 };
 
 const jobPackFeatures = [
-  "10 AI rewrite credits for resumes, cover letters, support replies, and salary messages",
+  "10 AI rewrite credits for difficult emails, customer replies, reviews, refunds, and job-search messages",
   "One-time purchase — no subscription commitment",
-  "Best for validating one job-search or customer-support workflow before paying monthly",
+  "Best for trying one support queue, freelancer client thread, or job-search push before paying monthly",
   "Credits stay attached to your KindReply account after checkout",
 ];
 
 const proFeatures = [
-  "300 credits every month for active job-search weeks",
-  "Advanced AI rewriting and ATS optimization",
-  "Premium templates and PDF export",
-  "Best value when you are applying, following up, and negotiating regularly",
+  "300 credits every month for recurring customer-support, freelance, and job-search replies",
+  "Advanced AI rewriting for tone, empathy, and concise professional phrasing",
+  "Premium templates for apologies, refunds, follow-ups, negative reviews, and workplace emails",
+  "Best value when difficult replies are part of your weekly workflow",
+];
+
+const replyPackUseCases = [
+  ["Customer support", "Handle refunds, complaints, angry customers, and escalations with calm replies."],
+  ["Freelancers", "Answer scope changes, late payments, rude clients, and follow-ups without sounding defensive."],
+  ["Small business", "Protect trust when replying to negative reviews, apology requests, and service issues."],
 ];
 
 function getStoredUser(): StoredUser | null {
@@ -121,7 +127,7 @@ export default function PricingClient() {
         <div className="mx-auto max-w-5xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-800">
             <Sparkles className="h-4 w-4" />
-            One reply pack first, Pro when usage is proven
+            One Reply Pack first, Pro when usage is proven
           </div>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Simple pricing for job-search and support replies that need to sound human
@@ -167,7 +173,7 @@ export default function PricingClient() {
               className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-foreground/90 disabled:opacity-60"
             >
               {loadingPlan === "plan_kindreply_jobpack" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-              Buy Job Pack
+              Buy Reply Pack
               <ArrowRight className="h-4 w-4" />
             </button>
           </article>
@@ -210,21 +216,41 @@ export default function PricingClient() {
         </div>
       </section>
 
+      <section className="border-t border-border px-4 py-14">
+        <div className="mx-auto max-w-4xl">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">Reply Pack use cases</p>
+            <h2 className="mt-2 text-2xl font-bold text-foreground">Built for high-stakes replies, not generic chat</h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Use credits when the reply affects trust, money, reviews, client relationships, or a job opportunity.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {replyPackUseCases.map(([title, description]) => (
+              <div key={title} className="rounded-2xl border border-border bg-card p-5">
+                <h3 className="font-semibold text-foreground">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-border bg-muted/20 px-4 py-14">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-2xl font-bold text-foreground">What should I buy first?</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl border border-border bg-card p-5">
               <h3 className="font-semibold text-foreground">Trying KindReply?</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">Buy the $4.99 Job Pack and use it on one role, one company, one support queue, or one negotiation thread.</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">Buy the $4.99 Reply Pack and use it on one role, one company, one support queue, or one negotiation thread.</p>
             </div>
             <div className="rounded-2xl border border-border bg-card p-5">
-              <h3 className="font-semibold text-foreground">Applying weekly?</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">Use Pro when rewrites, cover letters, support replies, and follow-ups are part of your recurring workflow.</p>
+              <h3 className="font-semibold text-foreground">Writing replies weekly?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">Use Pro when customer replies, cover letters, support follow-ups, and workplace messages are part of your recurring workflow.</p>
             </div>
             <div className="rounded-2xl border border-border bg-card p-5">
               <h3 className="font-semibold text-foreground">Need credits only?</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">Stay on Job Packs. You can buy again without changing your plan.</p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">Stay on Reply Packs. You can buy again without changing your plan.</p>
             </div>
           </div>
         </div>
