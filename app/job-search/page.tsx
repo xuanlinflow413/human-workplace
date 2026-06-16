@@ -170,32 +170,32 @@ export default function JobSearchPage() {
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <Link
-              href="/workplace/how-to-resign-gracefully/"
+              href="/how-to-tell-your-boss-you-are-overwhelmed/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
-              <p className="font-medium text-[#1A1A1A]">How to Resign Gracefully</p>
-              <p className="mt-1 text-sm text-[#6B6B6B]">Leave with your head high</p>
+              <p className="font-medium text-[#1A1A1A]">How to Tell Your Boss You Are Overwhelmed</p>
+              <p className="mt-1 text-sm text-[#6B6B6B]">Reset priorities before the work breaks you</p>
             </Link>
             <Link
-              href="/workplace/asking-for-help-at-work/"
+              href="/burnout-email-template/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
-              <p className="font-medium text-[#1A1A1A]">How to Ask for a Raise</p>
-              <p className="mt-1 text-sm text-[#6B6B6B]">Make the case with data</p>
+              <p className="font-medium text-[#1A1A1A]">Burnout Email Template</p>
+              <p className="mt-1 text-sm text-[#6B6B6B]">Ask for support or leave with clarity</p>
             </Link>
             <Link
-              href="/workplace/telling-your-boss-youre-overwhelmed/"
+              href="/salary-negotiation-email-template/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
-              <p className="font-medium text-[#1A1A1A]">Telling Your Boss You Are Overwhelmed</p>
-              <p className="mt-1 text-sm text-[#6B6B6B]">Without sounding weak</p>
+              <p className="font-medium text-[#1A1A1A]">Salary Negotiation Email Template</p>
+              <p className="mt-1 text-sm text-[#6B6B6B]">Make the case with evidence, not guilt</p>
             </Link>
             <Link
-              href="/workplace/email-template-for-burnout-leave/"
+              href="/follow-up-email-after-interview/"
               className="rounded-lg border border-[#E5E5E5] bg-white p-4 transition hover:border-[#1A1A1A]"
             >
-              <p className="font-medium text-[#1A1A1A]">Burnout Leave Email</p>
-              <p className="mt-1 text-sm text-[#6B6B6B]">Ask for time when you have nothing left</p>
+              <p className="font-medium text-[#1A1A1A]">Follow-Up Email After Interview</p>
+              <p className="mt-1 text-sm text-[#6B6B6B]">Send the thank-you note that still sounds like you</p>
             </Link>
           </div>
         </div>

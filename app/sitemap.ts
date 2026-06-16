@@ -35,6 +35,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/two-weeks-notice-generator/`, priority: 0.84, changeFrequency: "weekly" },
     { url: `${baseUrl}/professional-email-generator/`, priority: 0.86, changeFrequency: "weekly" },
     { url: `${baseUrl}/workplace-email-templates/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/how-to-tell-your-boss-you-are-overwhelmed/`, priority: 0.82, changeFrequency: "weekly" },
+    { url: `${baseUrl}/burnout-email-template/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/salary-negotiation-email-template/`, priority: 0.84, changeFrequency: "weekly" },
+    { url: `${baseUrl}/follow-up-email-after-interview/`, priority: 0.84, changeFrequency: "weekly" },
   ];
 
   // Dynamic routes — automatically generated from data source

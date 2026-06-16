@@ -254,6 +254,10 @@ export default function HomePage() {
               ["/two-weeks-notice-generator/", "Two Weeks Notice Generator", "Create a simple two weeks notice message for work."],
               ["/professional-email-generator/", "Professional Email Generator", "Draft workplace emails for follow-ups, requests, and boundaries."],
               ["/workplace-email-templates/", "Workplace Email Templates", "Browse templates for difficult moments at work."],
+              ["/how-to-tell-your-boss-you-are-overwhelmed/", "Tell Your Boss You Are Overwhelmed", "Use a calm script to reset priorities before workload becomes burnout."],
+              ["/burnout-email-template/", "Burnout Email Template", "Ask for support or time off without oversharing."],
+              ["/salary-negotiation-email-template/", "Salary Negotiation Email Template", "Ask for better compensation with evidence and a professional tone."],
+              ["/follow-up-email-after-interview/", "Follow-Up Email After Interview", "Send a thank-you or status check that sounds human, not generic."],
             ].map(([href, title, description]) => (
               <Link
                 key={href}
