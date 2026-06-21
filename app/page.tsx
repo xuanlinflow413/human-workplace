@@ -24,6 +24,11 @@ const mostShared = [
 
 const featuredReplyTools = [
   [
+    "/ai-email-writer/",
+    "AI Email Writer",
+    "Write workplace emails, replies, and follow-ups that sound professional and human.",
+  ],
+  [
     "/tools/email-reply-generator/",
     "Email Reply Generator",
     "Turn difficult emails into kind, professional replies.",
