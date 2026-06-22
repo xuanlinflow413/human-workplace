@@ -39,6 +39,27 @@ export default function Footer() {
             <Link href="/professional-email-generator/" className="hover:text-foreground transition-colors">
               Professional Emails
             </Link>
+            <Link href="/ai-email-writer/" className="hover:text-foreground transition-colors">
+              AI Email Writer
+            </Link>
+            <Link href="/ai-email-agent/" className="hover:text-foreground transition-colors">
+              AI Email Agent
+            </Link>
+            <Link href="/customer-service-email-writer/" className="hover:text-foreground transition-colors">
+              Customer Service Email
+            </Link>
+            <Link href="/apology-email-writer/" className="hover:text-foreground transition-colors">
+              Apology Email
+            </Link>
+            <Link href="/resignation-email-writer/" className="hover:text-foreground transition-colors">
+              Resignation Email Writer
+            </Link>
+            <Link href="/burnout-email-reply/" className="hover:text-foreground transition-colors">
+              Burnout Email Reply
+            </Link>
+            <Link href="/difficult-conversation-email/" className="hover:text-foreground transition-colors">
+              Difficult Conversation Email
+            </Link>
             <Link href="/workplace-email-templates/" className="hover:text-foreground transition-colors">
               Workplace Templates
             </Link>

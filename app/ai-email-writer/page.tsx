@@ -28,6 +28,13 @@ const useCases = [
 ];
 
 const emailTypes = [
+  ["Resignation email writer", "/resignation-email-writer/"],
+  ["Burnout email reply", "/burnout-email-reply/"],
+  ["Difficult conversation email", "/difficult-conversation-email/"],
+  ["Polite professional email replies", "/polite-professional-email-replies/"],
+  ["AI email agent", "/ai-email-agent/"],
+  ["Customer service email writer", "/customer-service-email-writer/"],
+  ["Apology email writer", "/apology-email-writer/"],
   ["Cold email writer", "/cold-email-writer/"],
   ["Follow-up email writer", "/follow-up-email-writer/"],
   ["Job application email writer", "/job-application-email-writer/"],
