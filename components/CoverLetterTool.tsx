@@ -38,6 +38,7 @@ export default function CoverLetterTool() {
   const [hasGenerated, setHasGenerated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [usedFallback, setUsedFallback] = useState(false);
+  const [needsCredits, setNeedsCredits] = useState(false);
   const [showDemoDropdown, setShowDemoDropdown] = useState(false);
   const [showBuyModal, setShowBuyModal] = useState(false);
   const outputRef = useRef<HTMLDivElement>(null);
@@ -74,6 +75,7 @@ export default function CoverLetterTool() {
     if (!jd.trim()) return;
     setIsLoading(true);
     setUsedFallback(false);
+    setNeedsCredits(false);
 
     trackGenerateClicked("cover_letter", jd.trim().length > 0);
 
@@ -107,7 +109,8 @@ export default function CoverLetterTool() {
         }
       } else if (res.status === 401 || res.status === 402) {
         const data = await res.json() as { message?: string; code?: string };
-        setOutput(`⚠️ ${data.message || 'Authentication or credits required. Please sign in and ensure you have enough credits.'}`);
+        setOutput(`⚠️ ${data.message || 'Authentication or credits required. Please sign in or buy a Reply Pack to continue.'}`);
+        setNeedsCredits(true);
         setHasGenerated(true);
       } else {
         throw new Error(`API error: ${res.status}`);
@@ -130,6 +133,7 @@ export default function CoverLetterTool() {
     if (!user) return;
     setIsLoading(true);
     setUsedFallback(false);
+    setNeedsCredits(false);
 
     trackRegenerateClicked("cover_letter");
 
@@ -162,7 +166,8 @@ export default function CoverLetterTool() {
         }
       } else if (res.status === 401 || res.status === 402) {
         const data = await res.json() as { message?: string };
-        setOutput(`⚠️ ${data.message || 'Authentication or credits required.'}`);
+        setOutput(`⚠️ ${data.message || 'Authentication or credits required. Please sign in or buy a Reply Pack to continue.'}`);
+        setNeedsCredits(true);
       } else {
         throw new Error(`API error: ${res.status}`);
       }
@@ -305,10 +310,10 @@ export default function CoverLetterTool() {
           )}
         </div>
         {/* Premium template entry */}
-        <UpgradePrompt source="templates" compact isPro={isPro} userEmail={user?.email} creditsBalance={creditsBalance} subscription={subscription} />
+        <UpgradePrompt source="templates" compact isPro={isPro} userEmail={user?.email} userId={user?.id} creditsBalance={creditsBalance} subscription={subscription} />
       </div>
 
-      <UpgradePrompt source="inline" isPro={isPro} userEmail={user?.email} creditsBalance={creditsBalance} subscription={subscription} />
+      <UpgradePrompt source="inline" isPro={isPro} userEmail={user?.email} userId={user?.id} creditsBalance={creditsBalance} subscription={subscription} />
 
       {/* Inputs */}
       <div className="mt-6 space-y-5">
@@ -409,7 +414,7 @@ export default function CoverLetterTool() {
             )}
           </button>
         )}
-        <UpgradePrompt source="unlimited" compact isPro={isPro} userEmail={user?.email} creditsBalance={creditsBalance} subscription={subscription} />
+        <UpgradePrompt source="unlimited" compact isPro={isPro} userEmail={user?.email} userId={user?.id} creditsBalance={creditsBalance} subscription={subscription} />
         
         {/* Button helper text */}
         <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
@@ -478,6 +483,42 @@ export default function CoverLetterTool() {
         </p>
       )}
 
+      {needsCredits && (
+        <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          <p className="font-medium">Need credits to keep generating?</p>
+          <p className="mt-1 text-amber-800">Buy a Reply Pack on the pricing page or open checkout here.</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {user ? (
+              <button
+                type="button"
+                onClick={() => setShowBuyModal(true)}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-foreground px-4 py-2 text-xs font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
+              >
+                <Coins className="h-3.5 w-3.5" />
+                Buy Reply Pack
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  window.location.href = getLoginUrl();
+                }}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-foreground px-4 py-2 text-xs font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
+              >
+                <LogIn className="h-3.5 w-3.5" />
+                Sign in to buy credits
+              </button>
+            )}
+            <a
+              href="/pricing/"
+              className="inline-flex items-center rounded-lg border border-amber-300 bg-white px-4 py-2 text-xs font-medium text-amber-900 hover:bg-amber-100 transition-colors"
+            >
+              View pricing
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Output */}
       {hasGenerated && (
         <div ref={outputRef} className="mt-10 scroll-mt-20">
@@ -488,6 +529,7 @@ export default function CoverLetterTool() {
               setOutput("");
               setHasGenerated(false);
               setUsedFallback(false);
+              setNeedsCredits(false);
             }}
             isLoading={isLoading}
           />
@@ -496,6 +538,7 @@ export default function CoverLetterTool() {
       {showBuyModal && user && (
         <BuyCreditsModal
           userEmail={user.email}
+          userId={user.id}
           onClose={() => {
             setShowBuyModal(false);
             // 关闭 modal 时触发 credits 刷新

@@ -284,6 +284,7 @@ export default function SupportReplyTool({ context }: SupportReplyToolProps) {
       {showBuyModal && user && (
         <BuyCreditsModal
           userEmail={user.email}
+          userId={user.id}
           onClose={() => setShowBuyModal(false)}
           isPro={isPro}
           subscription={subscription}

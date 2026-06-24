@@ -469,6 +469,7 @@ export default function SalaryNegotiationTool() {
       {showBuyModal && user && (
         <BuyCreditsModal
           userEmail={user.email}
+          userId={user.id}
           onClose={() => {
             setShowBuyModal(false);
             // 关闭 modal 时触发 credits 刷新

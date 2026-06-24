@@ -3,24 +3,36 @@
 import { useState } from "react";
 import { X, Coins, Crown, Loader2, AlertCircle, Check } from "lucide-react";
 import { useAnalytics } from "@/lib/analytics";
-
-const API_BASE = "https://api.kindreply.co";
+import { createCheckoutSession, type CheckoutPlanId } from "@/lib/checkout";
 
 interface BuyCreditsModalProps {
   userEmail: string;
+  userId?: string;
   onClose: () => void;
   isPro?: boolean;
   subscription?: {
     status: string;
-    plan_id: string;
-    current_period_end: number | string;
-    cancel_at_period_end: boolean;
+    plan_id?: string;
+    plan_name?: string;
+    current_period_end?: number | string;
+    cancel_at_period_end?: boolean;
   } | null;
-  defaultTab?: string;
+  defaultTab?: "credits" | "pro";
   onPaymentSuccess?: () => void;
 }
 
-const PLANS = [
+type CreditPlan = {
+  id: CheckoutPlanId;
+  name: string;
+  description: string;
+  price: string;
+  credits: number;
+  interval: "one-time" | "month";
+  icon: typeof Coins;
+  highlight: boolean;
+};
+
+const PLANS: CreditPlan[] = [
   {
     id: "plan_kindreply_jobpack",
     name: "Job Pack",
@@ -43,7 +55,7 @@ const PLANS = [
   },
 ];
 
-export default function BuyCreditsModal({ userEmail, onClose, isPro = false, subscription, defaultTab, onPaymentSuccess }: BuyCreditsModalProps) {
+export default function BuyCreditsModal({ userEmail, userId, onClose, isPro = false, subscription, defaultTab, onPaymentSuccess }: BuyCreditsModalProps) {
   const [loading, setLoading] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState(defaultTab || "credits");
@@ -131,8 +143,15 @@ export default function BuyCreditsModal({ userEmail, onClose, isPro = false, sub
   }
 
   // Non-Pro user: show purchase options with tabs
-  const handleBuy = async (planId: string) => {
+  const handleBuy = async (planId: CheckoutPlanId) => {
     const plan = PLANS.find(p => p.id === planId);
+    const checkoutUserId = userId || userEmail;
+
+    if (!checkoutUserId) {
+      setError("Please sign in before buying credits.");
+      return;
+    }
+
     if (plan) {
       trackBuyCreditsClicked("buy_modal", planId);
       trackCheckoutStarted(planId, plan.name, plan.price);
@@ -141,34 +160,13 @@ export default function BuyCreditsModal({ userEmail, onClose, isPro = false, sub
     setError(null);
 
     try {
-      const res = await fetch(`${API_BASE}/checkout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-User-ID": userEmail,
-        },
-        body: JSON.stringify({
-          plan_id: planId,
-          success_url: `${window.location.origin}${window.location.pathname}?checkout=success`,
-          cancel_url: `${window.location.origin}${window.location.pathname}?checkout=cancel`,
-        }),
+      const checkoutUrl = await createCheckoutSession({
+        planId,
+        userId: checkoutUserId,
+        successUrl: `${window.location.origin}${window.location.pathname}?checkout=success`,
+        cancelUrl: `${window.location.origin}${window.location.pathname}?checkout=cancel`,
       });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        const msg = data.error || data.details || `Checkout failed (${res.status})`;
-        setError(msg);
-        return;
-      }
-
-      if (data.url) {
-        window.location.assign(data.url);
-      } else if (data.sessionUrl) {
-        window.location.assign(data.sessionUrl);
-      } else {
-        setError("No checkout URL returned. Please contact support.");
-      }
+      window.location.assign(checkoutUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Network error");
     } finally {

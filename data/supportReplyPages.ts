@@ -399,4 +399,40 @@ export const supportReplyPages: Record<string, SupportReplyPage> = {
       ],
     },
   },
+  'agentic-commerce-customer-service': {
+    slug: 'agentic-commerce-customer-service',
+    title: 'Agentic Commerce Customer Service Replies | KindReply',
+    description: 'Customer service reply templates for agentic commerce, AI shopping agents, order questions, refund boundaries, and post-purchase support.',
+    config: {
+      eyebrow: 'Agentic commerce support',
+      h1: 'Agentic commerce customer service replies',
+      description: 'AI shopping agents can create faster purchases, but customers still need clear human support when orders, refunds, subscriptions, and expectations get messy.',
+      primaryCta: { href: "#support-reply-tool", label: 'Generate a support reply' },
+      tool: {
+        eyebrow: 'AI support reply tool',
+        title: 'Generate a reply with KindReply credits',
+        description: 'Paste the customer message, choose the goal and tone, and draft a sendable response using 1 KindReply credit. Static templates on this page are free.',
+      },
+      secondaryCta: { href: '/tools/customer-service-reply-generator/', label: 'Open customer service generator' },
+      cards: [
+        { title: 'Agent-assisted orders', text: 'Explain what happened when a customer, AI shopping agent, or automation submitted the wrong item, address, or preference.' },
+        { title: 'Refund boundaries', text: 'Stay helpful while clarifying policies for mistaken purchases, duplicate orders, delayed delivery, or subscription confusion.' },
+        { title: 'Trust recovery', text: 'Use transparent language when automation caused friction and the customer needs a clear next step.' },
+      ],
+      templates: [
+        { title: 'AI-assisted order mistake', body: 'Hi [Name],\n\nThanks for reaching out. I understand the order was placed through [agent/tool/channel], and the result did not match what you expected.\n\nHere is what I can do now: [resolution or next step]. If you can confirm [detail], I will help update the order or explain the available options.\n\nThank you,\n[Name]' },
+        { title: 'Agentic commerce refund boundary', body: 'Hi [Name],\n\nI understand why you are asking for a refund after [order/subscription/action]. I checked the details, and our policy for this situation is [short policy].\n\nI am not able to [unavailable option], but I can [available option]. If you would like, I can also help with [next step].\n\nBest,\n[Name]' },
+      ],
+      tips: [
+        'Name whether the issue came from the customer, the shopping agent, or the merchant system without blaming the customer.',
+        'Separate policy from empathy: acknowledge the friction first, then explain the available options.',
+        'For AI-assisted purchases, ask for one verifying detail before changing an order, refund, or subscription.',
+      ],
+      related: [
+        { href: "/tools/customer-service-reply-generator/", label: "Customer Service Reply Generator", text: "Draft support replies for complaints, refunds, and escalations." },
+        { href: "/refund-response-generator/", label: "Refund Response Generator", text: "Approve, deny, or explain refund decisions clearly." },
+        { href: "/for-small-business/", label: "KindReply for Small Business", text: "Use repeatable customer communication templates for small teams." },
+      ],
+    },
+  },
 };

@@ -63,6 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/templates/follow-up-reply/`, priority: 0.84, changeFrequency: "weekly" },
     { url: `${baseUrl}/templates/decline-politely/`, priority: 0.84, changeFrequency: "weekly" },
     { url: `${baseUrl}/for-customer-support/`, priority: 0.86, changeFrequency: "weekly" },
+    { url: `${baseUrl}/agentic-commerce-customer-service/`, priority: 0.86, changeFrequency: "weekly" },
     { url: `${baseUrl}/for-freelancers/`, priority: 0.84, changeFrequency: "weekly" },
     { url: `${baseUrl}/for-small-business/`, priority: 0.84, changeFrequency: "weekly" },
   ];

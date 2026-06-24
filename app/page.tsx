@@ -29,6 +29,26 @@ const featuredReplyTools = [
     "Write workplace emails, replies, and follow-ups that sound professional and human.",
   ],
   [
+    "/resignation-email-writer/",
+    "Resignation Email Writer",
+    "Leave gracefully with a clear, respectful resignation email.",
+  ],
+  [
+    "/burnout-email-reply/",
+    "Burnout Email Reply",
+    "Set capacity limits or ask for support without oversharing.",
+  ],
+  [
+    "/difficult-conversation-email/",
+    "Difficult Conversation Email",
+    "Write sensitive workplace messages with less friction.",
+  ],
+  [
+    "/polite-professional-email-replies/",
+    "Professional Email Replies",
+    "Reply politely to requests, reminders, declines, and hard messages.",
+  ],
+  [
     "/tools/email-reply-generator/",
     "Email Reply Generator",
     "Turn difficult emails into kind, professional replies.",

@@ -3,24 +3,33 @@
 import { useState } from "react";
 import { Crown, Coins, Check, Loader2, Settings } from "lucide-react";
 import BuyCreditsModal from "./BuyCreditsModal";
+import { useAuth, type Subscription } from "@/lib/AuthContext";
 
 interface UpgradePromptProps {
   source?: "inline" | "templates" | "unlimited" | "pdf" | "optimize";
   compact?: boolean;
   isPro?: boolean;
   userEmail?: string;
+  userId?: string;
   creditsBalance?: number | null;
-  subscription?: { status: string; plan_name?: string; current_period_end?: number | string } | null;
+  subscription?: Subscription | null;
 }
 
 export default function UpgradePrompt({ 
   compact = false, 
   isPro = false,
   userEmail,
+  userId,
   creditsBalance,
+  subscription,
 }: UpgradePromptProps) {
   const [open, setOpen] = useState(false);
   const [managing, setManaging] = useState(false);
+  const { user, getLoginUrl, subscription: authSubscription, creditsBalance: authCreditsBalance } = useAuth();
+  const effectiveUserEmail = userEmail || user?.email || "";
+  const effectiveUserId = userId || user?.id;
+  const effectiveCreditsBalance = creditsBalance ?? authCreditsBalance;
+  const effectiveSubscription = subscription ?? authSubscription;
 
   // Pro用户：显示会员状态卡，隐藏所有Upgrade引导
   if (isPro) {
@@ -48,7 +57,7 @@ export default function UpgradePrompt({
             </div>
             <div className="rounded-lg bg-white/60 border border-amber-100 p-3">
               <p className="text-xs text-muted-foreground mb-1">Credits</p>
-              <p className="text-lg font-semibold text-foreground">{creditsBalance ?? "—"}</p>
+              <p className="text-lg font-semibold text-foreground">{effectiveCreditsBalance ?? "—"}</p>
             </div>
           </div>
           
@@ -67,7 +76,7 @@ export default function UpgradePrompt({
                 const res = await fetch("https://api.kindreply.co/create-portal-session", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ email: userEmail }),
+                  body: JSON.stringify({ email: effectiveUserEmail }),
                 });
                 const data = await res.json() as { url?: string };
                 if (data.url) window.location.href = data.url;
@@ -96,7 +105,13 @@ export default function UpgradePrompt({
   if (compact) {
     return (
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          if (effectiveUserId) {
+            setOpen(true);
+          } else {
+            window.location.href = getLoginUrl();
+          }
+        }}
         className="inline-flex items-center gap-1 rounded-full bg-foreground px-3 py-1 text-xs font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
       >
         <Coins className="h-3 w-3" />
@@ -166,7 +181,13 @@ export default function UpgradePrompt({
 
             <div className="mt-4">
               <button
-                onClick={() => setOpen(true)}
+                onClick={() => {
+                  if (effectiveUserId) {
+                    setOpen(true);
+                  } else {
+                    window.location.href = getLoginUrl();
+                  }
+                }}
                 className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-foreground/90 transition-colors"
               >
                 <Coins className="h-4 w-4" />
@@ -179,9 +200,11 @@ export default function UpgradePrompt({
 
       {open && (
         <BuyCreditsModal
-          userEmail={userEmail || ""}
+          userEmail={effectiveUserEmail}
+          userId={effectiveUserId}
           onClose={() => setOpen(false)}
           defaultTab="credits"
+          subscription={effectiveSubscription}
           onPaymentSuccess={() => {
             // 触发全局 credits 刷新
             console.log('[UpgradePrompt] payment success, triggering refresh');

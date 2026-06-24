@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, Coins, Crown, Loader2, Sparkles } from "lucide-react";
 import { useAnalytics } from "@/lib/analytics";
+import { createCheckoutSession, CHECKOUT_API_BASE, getCheckoutUserId, getLoginUrl, type CheckoutPlanId } from "@/lib/checkout";
 
-const API_BASE = "https://api.kindreply.co";
-
-type CheckoutPlan = "plan_kindreply_jobpack" | "plan_kindreply_pro";
+type CheckoutPlan = CheckoutPlanId;
 
 const planDetails: Record<CheckoutPlan, { name: string; price: string }> = {
   plan_kindreply_jobpack: { name: "Reply Pack", price: "$4.99" },
@@ -47,14 +46,22 @@ function getStoredUser(): StoredUser | null {
   }
 }
 
-function getLoginUrl() {
-  return `${API_BASE}/api/auth/google?returnUrl=${encodeURIComponent(window.location.href)}`;
+function buildLoginHref(returnUrl = "https://kindreply.co/pricing/") {
+  return `${CHECKOUT_API_BASE}/api/auth/google?returnUrl=${encodeURIComponent(returnUrl)}`;
 }
 
 export default function PricingClient() {
   const [loadingPlan, setLoadingPlan] = useState<CheckoutPlan | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [loginHref, setLoginHref] = useState(buildLoginHref());
   const { trackCheckoutStarted, trackCheckoutSuccess, trackEntitlementActivated, trackLoginStart } = useAnalytics();
+
+  useEffect(() => {
+    setIsSignedIn(Boolean(getCheckoutUserId(getStoredUser())));
+    setLoginHref(buildLoginHref(window.location.href));
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -75,11 +82,11 @@ export default function PricingClient() {
   const startCheckout = async (planId: CheckoutPlan) => {
     const plan = planDetails[planId];
     const user = getStoredUser();
-    const userId = user?.email || user?.id;
+    const userId = getCheckoutUserId(user);
 
     if (!userId) {
       trackLoginStart("pricing_checkout");
-      window.location.href = getLoginUrl();
+      window.location.href = getLoginUrl(window.location.href);
       return;
     }
 
@@ -88,32 +95,13 @@ export default function PricingClient() {
     setError(null);
 
     try {
-      const res = await fetch(`${API_BASE}/checkout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-User-ID": userId,
-        },
-        body: JSON.stringify({
-          plan_id: planId,
-          success_url: `${window.location.origin}/pricing/?checkout=success&plan=${encodeURIComponent(planId)}`,
-          cancel_url: `${window.location.origin}/pricing/?checkout=cancel`,
-        }),
+      const checkoutUrl = await createCheckoutSession({
+        planId,
+        userId,
+        successUrl: `${window.location.origin}/pricing/?checkout=success&plan=${encodeURIComponent(planId)}`,
+        cancelUrl: `${window.location.origin}/pricing/?checkout=cancel`,
       });
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setError(data.error || data.details || `Checkout failed (${res.status})`);
-        return;
-      }
-
-      const checkoutUrl = data.url || data.sessionUrl;
-      if (!checkoutUrl) {
-        setError("No checkout URL returned. Please try again.");
-        return;
-      }
-
-      window.location.href = checkoutUrl;
+      window.location.assign(checkoutUrl);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Network error");
     } finally {
@@ -166,16 +154,27 @@ export default function PricingClient() {
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              onClick={() => startCheckout("plan_kindreply_jobpack")}
-              disabled={loadingPlan !== null}
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-foreground/90 disabled:opacity-60"
-            >
-              {loadingPlan === "plan_kindreply_jobpack" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-              Buy Reply Pack
-              <ArrowRight className="h-4 w-4" />
-            </button>
+            {isSignedIn ? (
+              <button
+                type="button"
+                onClick={() => startCheckout("plan_kindreply_jobpack")}
+                disabled={loadingPlan !== null}
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-foreground/90 disabled:opacity-60"
+              >
+                {loadingPlan === "plan_kindreply_jobpack" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+                Buy Reply Pack
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            ) : (
+              <a
+                href={loginHref}
+                onClick={() => trackLoginStart("pricing_checkout")}
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-foreground/90"
+              >
+                Buy Reply Pack
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            )}
           </article>
 
           <article className="relative rounded-3xl border border-amber-200 bg-amber-50/40 p-8 shadow-sm">
@@ -202,16 +201,27 @@ export default function PricingClient() {
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              onClick={() => startCheckout("plan_kindreply_pro")}
-              disabled={loadingPlan !== null}
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-700 disabled:opacity-60"
-            >
-              {loadingPlan === "plan_kindreply_pro" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-              Upgrade to Pro
-              <ArrowRight className="h-4 w-4" />
-            </button>
+            {isSignedIn ? (
+              <button
+                type="button"
+                onClick={() => startCheckout("plan_kindreply_pro")}
+                disabled={loadingPlan !== null}
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-700 disabled:opacity-60"
+              >
+                {loadingPlan === "plan_kindreply_pro" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+                Upgrade to Pro
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            ) : (
+              <a
+                href={loginHref}
+                onClick={() => trackLoginStart("pricing_checkout")}
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-700"
+              >
+                Upgrade to Pro
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            )}
           </article>
         </div>
       </section>
